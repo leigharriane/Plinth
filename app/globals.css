@@ -1,0 +1,338 @@
+@import "tailwindcss";
+
+/* next-themes toggles a `dark` class on <html>. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Color tokens, from the Figma "Plinth Template" page (light 1203:206, dark 1203:101).
+ * Deliberate deviations from the file, for WCAG AA:
+ *   --fg-muted (light): Figma #767676 is 4.11:1 on bg and 3.75:1 on cards → #666666 (5.19 / 4.74).
+ *   --ring (dark): accent is 2.55:1 on the dark bg, so focus rings use the text color instead.
+ * Not in the file: --border-subtle (fg at 12%) outlines project cards, which would otherwise
+ * vanish on the dark bg, and the dark --placeholder (fg at 6% over surface) replaces the
+ * light slab that glared in dark mode.
+ * lib/static-colors.ts copies some of these for code that can't read CSS variables.
+ */
+:root {
+  color-scheme: light;
+  --bg: #f4f2ff;
+  --surface: #e7e8fc;
+  --fg: #030015;
+  --fg-muted: #666666;
+  --accent: #0019ff;
+  --accent-hover: #0014cc;
+  --on-accent: #f4f2ff;
+  --ring: #0019ff;
+  --border: rgb(3 0 21 / 0.4);
+  --border-subtle: rgb(3 0 21 / 0.12);
+  --nav-bg: rgb(244 242 255 / 0.85);
+  /* Nav link highlight. Stronger in dark mode, where a light mix barely shows. */
+  --marker: color-mix(in oklab, var(--accent) 30%, transparent);
+  --placeholder: #e9e9e9;
+  --logo-placeholder: #d9d9e0;
+}
+
+.dark {
+  color-scheme: dark;
+  --bg: #030015;
+  --surface: #050020;
+  --fg: #f0f0f0;
+  --fg-muted: #a5a5a5;
+  --on-accent: #f0f0f0;
+  --ring: #f0f0f0;
+  --border: rgb(240 240 240 / 0.4);
+  --border-subtle: rgb(240 240 240 / 0.12);
+  --nav-bg: rgb(3 0 21 / 0.9);
+  --marker: color-mix(in oklab, var(--accent) 70%, transparent);
+  --placeholder: #0d082b;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-on-accent: var(--on-accent);
+  --color-ring: var(--ring);
+  --color-border: var(--border);
+  --color-border-subtle: var(--border-subtle);
+  --color-nav-bg: var(--nav-bg);
+  --color-placeholder: var(--placeholder);
+  --color-logo-placeholder: var(--logo-placeholder);
+
+  --font-sans: var(--font-albert-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+@theme {
+  /* Albert Sans Light–SemiBold only. Bold and heavier are removed so they can't be used. */
+  --font-weight-*: initial;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  /*
+   * Type scale, by role. Code is the source of truth for sizes, not Figma: the Figma
+   * frame sets reading and UI text 1.3–1.9× larger than comparable sites. Each size is
+   * fluid between a 375px and a 1440px viewport and stops growing after that:
+   *   clamp(min, intercept + slope × 100vw, max), slope = (max − min) / 1065px
+   * Tailwind's default sizes are removed so nothing falls back to another scale.
+   */
+  --text-*: initial;
+  --text-h1: clamp(2.25rem, 1.81rem + 1.878vw, 3.5rem); /* 36 → 56 */
+  --text-h1--line-height: 1.1;
+  --text-h2: clamp(1.75rem, 1.398rem + 1.502vw, 2.75rem); /* 28 → 44 */
+  --text-h2--line-height: 1.15;
+  --text-display-cta: clamp(2rem, 1.56rem + 1.878vw, 3.25rem); /* 32 → 52 */
+  --text-display-cta--line-height: 1.1;
+  --text-display-cta--letter-spacing: -0.04em;
+  --text-display-about: clamp(
+    1.75rem,
+    1.398rem + 1.502vw,
+    2.75rem
+  ); /* 28 → 44 */
+  --text-display-about--line-height: 1.1;
+  --text-marquee-lg: clamp(2rem, 1.648rem + 1.502vw, 3rem); /* 32 → 48 */
+  --text-marquee-lg--line-height: 1.2;
+  --text-marquee-lg--letter-spacing: -0.04em;
+  --text-marquee-md: clamp(1.75rem, 1.486rem + 1.127vw, 2.5rem); /* 28 → 40 */
+  --text-marquee-md--line-height: 1.2;
+  --text-marquee-md--letter-spacing: -0.04em;
+  /* Card titles, the about label and year. */
+  --text-title: clamp(1.25rem, 1.162rem + 0.376vw, 1.5rem); /* 20 → 24 */
+  --text-title--line-height: 1.25;
+  /* Experience company names. */
+  --text-title-sm: clamp(1.125rem, 1.037rem + 0.376vw, 1.375rem); /* 18 → 22 */
+  --text-title-sm--line-height: 1.25;
+  /* Experience dates. */
+  --text-subtitle: clamp(1rem, 0.956rem + 0.188vw, 1.125rem); /* 16 → 18 */
+  --text-subtitle--line-height: 1.4;
+  /* Long reading text. Hero and CTA use /normal (1.5) for their shorter paragraphs. */
+  --text-lead: clamp(1.0625rem, 0.997rem + 0.282vw, 1.25rem); /* 17 → 20 */
+  --text-lead--line-height: 1.6;
+  --text-body: clamp(1rem, 0.978rem + 0.094vw, 1.0625rem); /* 16 → 17 */
+  --text-body--line-height: 1.5;
+  /* Buttons. */
+  --text-ui: clamp(1rem, 0.956rem + 0.188vw, 1.125rem); /* 16 → 18 */
+  --text-ui--line-height: 1.25;
+  --text-nav: 1rem; /* 16 */
+  --text-nav--line-height: 1.25;
+  --text-brand: clamp(1.125rem, 1.081rem + 0.188vw, 1.25rem); /* 18 → 20 */
+  --text-brand--line-height: 1.25;
+  /* Footer links and copyright. */
+  --text-meta: clamp(0.9375rem, 0.915rem + 0.094vw, 1rem); /* 15 → 16 */
+  --text-meta--line-height: 1.5;
+  /* Project category pills. */
+  --text-tag: clamp(0.875rem, 0.853rem + 0.094vw, 0.9375rem); /* 14 → 15 */
+  --text-tag--line-height: 1.4;
+
+  /* Display tokens default to -0.04em; components switch to this once the text reaches ~56px. */
+  --tracking-display: -0.06em;
+
+  /* Page gutter, 16 at 375 → 64 at 1440; content stops at 1200px wide. */
+  --spacing-gutter: clamp(1rem, 1rem + 48 * (100vw - 375px) / 1065, 4rem);
+  /* Section rhythm also follows height, so short laptop screens get less padding. */
+  --spacing-section: clamp(3.5rem, min(7vw, 9svh), 6rem);
+  /* Top and bottom of the tech marquee band, which needs less room than a section. */
+  --spacing-band: clamp(2.5rem, min(5vw, 7svh), 4rem);
+  --container-page: calc(75rem + 2 * var(--spacing-gutter));
+  /* Section heading → content, 24 → 40. */
+  --spacing-block: clamp(1.5rem, 1.148rem + 1.502vw, 2.5rem);
+  /*
+   * Works heading → carousel (24 → 40) and cards → arrow buttons (16 → 32). Both are also
+   * capped by the screen height, so the heading, cards and arrows fit on a short laptop
+   * screen after a jump to #works.
+   */
+  --spacing-carousel: clamp(1.5rem, min(1.148rem + 1.502vw, 4svh), 2.5rem);
+  --spacing-controls: clamp(1rem, min(1.324rem + 0.751vw, 3svh), 2rem);
+
+  --radius-card: 1rem;
+  --blur-nav: 23px;
+  /* iOS's sheet curve: quick to start, long gentle settle. */
+  --ease-ios: cubic-bezier(0.32, 0.72, 0, 1);
+  /* Hero glow: Figma "Ellipse 4" layer blur 70, which CSS renders as blur(35px). */
+  --blur-glow: 35px;
+
+  /* The track holds two identical halves, so moving it by -50% loops seamlessly. */
+  --animate-marquee: marquee 30s linear infinite;
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+@layer base {
+  html {
+    /* The 64px sticky nav plus breathing room. */
+    scroll-padding-top: 5rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    @apply bg-bg font-sans text-fg antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--on-accent);
+  }
+}
+
+@layer components {
+  /*
+   * Nav link highlight: an accent marker sweeps in behind the label on hover and stays on
+   * the section you're reading. The label is the link's <span>.
+   */
+  .nav-marker > span {
+    background: linear-gradient(var(--marker), var(--marker)) no-repeat left 0
+      bottom 0.05em / 0% 0.6em;
+  }
+
+  .nav-marker:hover > span,
+  .nav-marker:focus-visible > span,
+  .nav-marker[aria-current] > span {
+    background-size: 100% 0.6em;
+  }
+
+  /*
+   * The marker alone is too faint against the page to mark the current section (WCAG
+   * 1.4.1 and 1.4.11), so the current label is also semibold: a cue that isn't color.
+   * A hidden bold copy of the label (data-text) reserves the wider width up front, so
+   * the links don't shift sideways as the current section changes.
+   */
+  .nav-marker > span {
+    display: inline-flex;
+    flex-direction: column;
+  }
+
+  .nav-marker > span::after {
+    content: attr(data-text);
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    font-weight: 600;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .nav-marker[aria-current] > span {
+    font-weight: 600;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .nav-marker > span {
+      transition: background-size 400ms var(--ease-ios);
+    }
+  }
+
+  /*
+   * The nav's background, after iOS 26's scroll edge effect. Instead of a bar with an
+   * edge, the page blurs and fades progressively as it slides under: each layer blurs
+   * harder and covers less, and the last tints toward the page color. It's taller than
+   * the nav so the fade finishes below it.
+   */
+  .soft-edge {
+    position: absolute;
+    inset: 0 0 auto;
+    height: 6rem;
+    pointer-events: none;
+  }
+
+  .soft-edge > div {
+    position: absolute;
+    inset: 0;
+  }
+
+  .soft-edge > div:nth-child(1) {
+    -webkit-backdrop-filter: blur(1px);
+    backdrop-filter: blur(1px);
+    mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+  }
+
+  .soft-edge > div:nth-child(2) {
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    mask-image: linear-gradient(to bottom, black 40%, transparent 80%);
+  }
+
+  .soft-edge > div:nth-child(3) {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    mask-image: linear-gradient(to bottom, black 25%, transparent 60%);
+  }
+
+  /* Strong enough down to the bottom of the focus rings (~60%) to keep them at 3:1. */
+  .soft-edge > div:nth-child(4) {
+    background: linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--bg) 92%, transparent) 0%,
+      color-mix(in oklab, var(--bg) 85%, transparent) 62%,
+      transparent 100%
+    );
+  }
+
+  /* A reading line along the top of the screen, faded at both ends so it has no hard caps. */
+  .reading-progress {
+    display: none;
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 8%,
+      black 92%,
+      transparent
+    );
+  }
+
+  /*
+   * Both follow the page's scroll, so they need no JavaScript. The edge and the line fade
+   * in over the first 2rem, so the top of the page is clear. Browsers without scroll
+   * timelines show the edge all the time and skip the line. The edge fades each layer,
+   * not the wrapper: animating the wrapper's opacity cuts the layers off from the page
+   * behind it, and the blur has nothing to blur.
+   */
+  @supports (animation-timeline: scroll()) {
+    .soft-edge > div {
+      animation: fade-in linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 2rem;
+    }
+
+    .reading-progress {
+      display: block;
+      animation: fade-in linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 2rem;
+    }
+
+    .reading-progress > div {
+      transform-origin: left;
+      animation: grow-x linear both;
+      animation-timeline: scroll(root);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+  }
+
+  @keyframes grow-x {
+    from {
+      scale: 0 1;
+    }
+  }
+}
