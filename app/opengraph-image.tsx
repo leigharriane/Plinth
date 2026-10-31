@@ -14,7 +14,7 @@ const colors = { ...staticColors.dark, accent: staticColors.accent };
 export default async function OpengraphImage() {
   const { name, hero, skills } = siteConfig;
   const lines = [hero.greeting, name, hero.tagline];
-  const band = skills.join(" - ");
+  const band = skills.join(" | ");
   // Bundled as TTF (next/og can't read woff2) so the build never needs the network.
   const font = await readFile(
     join(process.cwd(), "app/fonts/AlbertSans-SemiBold.ttf"),
@@ -31,21 +31,8 @@ export default async function OpengraphImage() {
         color: colors.fg,
         fontFamily: "Albert Sans",
         fontWeight: 600,
-        position: "relative",
       }}
     >
-      <div
-        style={{
-          position: "absolute",
-          top: 60,
-          left: 120,
-          width: 420,
-          height: 420,
-          borderRadius: "50%",
-          // Satori lacks `closest-side`; fade to a transparent accent so the edge stays blue.
-          backgroundImage: `radial-gradient(circle, ${colors.accent} 0%, ${colors.accent}00 70%)`,
-        }}
-      />
       <div
         style={{
           flex: 1,
@@ -56,8 +43,32 @@ export default async function OpengraphImage() {
           fontSize: 72,
           lineHeight: 1.2,
           textAlign: "center",
+          position: "relative",
         }}
       >
+        {/* Centered behind the text, where the glow rests on the site. */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <div
+            style={{
+              width: 420,
+              height: 420,
+              borderRadius: "50%",
+              // Satori lacks `closest-side`; fade to a transparent accent so the edge stays blue.
+              backgroundImage: `radial-gradient(circle, ${colors.accent} 0%, ${colors.accent}00 70%)`,
+            }}
+          />
+        </div>
         {lines.map((line, index) => (
           <div key={index}>{line}</div>
         ))}

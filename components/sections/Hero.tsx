@@ -1,23 +1,40 @@
-import { ArrowRight, CloudDownload, Command, FileText } from "lucide-react";
-import { HeroGlow } from "@/components/sections/HeroGlow";
+import { ArrowRight, CloudDownload, FileText } from "lucide-react";
+import { HeroPeek } from "@/components/sections/HeroPeek";
+import { HeroSpotlight } from "@/components/sections/HeroSpotlight";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { PointerStage } from "@/components/ui/PointerStage";
+import { ShortcutHint } from "@/components/ui/ShortcutHint";
+import { cn } from "@/lib/cn";
 import siteConfig from "@/site.config";
 
+// Full accent only in dark mode, where it reads as light. On the light background it
+// reads as a dark stain, and the heading over its middle drops to about 2.5:1, so light
+// mode gets a pale tint of it instead. The tint is the accent made see-through rather than
+// mixed with the background, since an oklab mix drifts toward sky blue.
 const glowClassName =
-  "size-full rounded-full bg-[radial-gradient(closest-side,var(--color-accent),transparent)] blur-glow";
+  "rounded-full bg-[radial-gradient(closest-side,color-mix(in_srgb,var(--color-accent)_22%,transparent),transparent)] blur-glow dark:bg-[radial-gradient(closest-side,var(--color-accent),transparent)]";
 
 export function Hero() {
   const { name, email, resume, hero } = siteConfig;
   const glow = hero.glow ?? "pointer";
+  const peek = (hero.peek ?? true) && siteConfig.projects.length > 0;
+  // Only the spotlight needs the mouse, so the other glows keep a plain server-rendered section.
+  const Section = glow === "pointer" ? PointerStage : "section";
 
   return (
-    <section
+    <Section
       id="home"
       aria-labelledby="hero-heading"
       className="isolate overflow-x-clip"
     >
-      <Container className="flex flex-col items-center gap-8 pt-section pb-section text-center">
+      {/* With the peek, the fan's bottom edge is the hero's, so it tucks under the skills band. */}
+      <Container
+        className={cn(
+          "flex flex-col items-center gap-8 pt-section text-center",
+          peek ? "pb-0" : "pb-section",
+        )}
+      >
         <h1
           id="hero-heading"
           className="relative text-h1 font-semibold text-balance"
@@ -27,26 +44,25 @@ export function Hero() {
             blur (CSS blur 35px). Sized and placed relative to the heading so it scales with it.
             Its top fades out so it never meets the translucent sticky nav in a hard line, and
             its bottom fades out before the intro, whose muted text drops below 4.5:1 on the
-            light-mode glow. The wrapper pads 70px so the mask doesn't clip the blur, plus, at
-            the sides, HeroGlow's 12% horizontal travel. Only the inner span moves, so the
-            vertical padding and the mask's stops stay fixed.
+            light-mode glow. The still glow's wrapper pads 70px so the mask doesn't clip the
+            blur. The spotlight rests centered instead and brings its own band and mask.
           */}
-          {glow !== "off" && (
+          {glow === "pointer" && (
+            <HeroSpotlight glowClassName={glowClassName} />
+          )}
+          {glow === "static" && (
             <span
               aria-hidden
-              className="pointer-events-none absolute top-[62%] left-[-9.8%] -z-10 box-content grid aspect-square w-[min(71%,431px)] -translate-1/2 place-items-center [mask-image:linear-gradient(to_bottom,transparent_20%,black_50%,black_58%,transparent_72%)] px-[calc(--spacing(17.5)_+_0.12_*_min(71%,431px))] py-17.5"
+              className="pointer-events-none absolute top-[62%] left-[-9.8%] -z-10 box-content grid aspect-square w-[min(71%,431px)] -translate-1/2 place-items-center [mask-image:linear-gradient(to_bottom,transparent_20%,black_50%,black_58%,transparent_72%)] p-17.5"
             >
-              {glow === "pointer" ? (
-                <HeroGlow className={glowClassName} />
-              ) : (
-                <span className={glowClassName} />
-              )}
+              <span className={cn("size-full", glowClassName)} />
             </span>
           )}
-          {/* The spaces keep the heading's plain text readable ("I am Juan"). */}
-          <span className="block">{hero.greeting}</span>{" "}
-          <span className="block">{name}</span>{" "}
-          <span className="block">{hero.tagline}</span>
+          {/* One block of text with forced breaks, not three block spans, so the whole name
+              is a single LCP candidate. The spaces keep the plain text readable ("I am David"). */}
+          {hero.greeting} <br aria-hidden />
+          {name} <br aria-hidden />
+          {hero.tagline}
         </h1>
 
         <p className="max-w-[33em] text-lead/normal font-normal text-fg-muted">
@@ -55,7 +71,7 @@ export function Hero() {
 
         <div className="flex flex-wrap justify-center gap-2.5">
           <ButtonLink href={`mailto:${email}`}>
-            Let’s Talk
+            Let’s talk
             <ArrowRight aria-hidden />
           </ButtonLink>
           {resume === "/resume" ? (
@@ -73,20 +89,10 @@ export function Hero() {
           )}
         </div>
 
-        {/* The shortcut needs a keyboard, so the hint hides on small and touch screens. */}
-        <p className="hidden flex-wrap items-center justify-center gap-x-1.5 gap-y-1 text-meta font-medium text-fg-muted md:inline-flex pointer-coarse:hidden">
-          <Command aria-hidden className="size-4" />
-          Press{" "}
-          <kbd className="rounded-md bg-surface px-1.5 py-0.5 font-sans text-fg">
-            ⌘K
-          </kbd>
-          or{" "}
-          <kbd className="rounded-md bg-surface px-1.5 py-0.5 font-sans text-fg">
-            Ctrl K
-          </kbd>
-          to jump anywhere
-        </p>
+        <ShortcutHint />
+
+        {peek && <HeroPeek />}
       </Container>
-    </section>
+    </Section>
   );
 }
