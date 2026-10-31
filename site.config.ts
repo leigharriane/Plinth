@@ -230,7 +230,7 @@ export default defineConfig({
 
   socials: [
     { platform: "linkedin", url: "https://www.linkedin.com/" },
-    { platform: "github", url: "https://github.com/" },
+    { platform: "github", url: "https://github.com/leigharriane" },
     { platform: "facebook", url: "https://www.facebook.com/" },
     { platform: "discord", url: "https://discord.com/" },
   ],

@@ -163,14 +163,18 @@ export type SiteConfig = {
   techStack: string[];
   /** Cards in the Recent work carousel. Leave it empty to hide the section. */
   projects: Project[];
+  /**
+   * The about section. Under the text it shows your GitHub contributions and latest
+   * repos, read from the GitHub link in `socials`, e.g. "https://github.com/you".
+   */
   about: {
     /** One string per paragraph. */
     paragraphs: string[];
-    /** Small heading above the oval, e.g. "about me". */
+    /** Small heading above the headline, e.g. "about me". */
     label: string;
-    /** Large text inside the oval. Keep it to a few short words so it fits, like "Get to know me." */
+    /** Large heading next to your paragraphs. A few words reads best, like "Get to know me." */
     headline: string;
-    /** Shown under the headline, e.g. 2024. Leave it out to show the visitor's current year. */
+    /** Shown after the label, e.g. 2024. Leave it out to show the visitor's current year. */
     year?: number | string;
   };
   /** One tab per job, in the order you list them. Leave it empty to hide the section. */
@@ -182,7 +186,10 @@ export type SiteConfig = {
     /** Short paragraph next to the heading. */
     text: string;
   };
-  /** Icon links in the closing section, shown in the order you list them. */
+  /**
+   * Icon links in the closing section, shown in the order you list them. Include your
+   * GitHub profile URL to show your contributions and repos in the about section.
+   */
   socials: Social[];
   /** Optional search and link preview settings. */
   seo?: {
