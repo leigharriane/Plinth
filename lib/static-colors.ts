@@ -5,7 +5,7 @@
  */
 export const staticColors = {
   light: { bg: "#f4f2ff" },
-  dark: { bg: "#030015", fg: "#f0f0f0" },
+  dark: { bg: "#030015", fg: "#f0f0f0", fgMuted: "#a5a5a5" },
   /** The same in both themes. */
   accent: "#0019ff",
 } as const;

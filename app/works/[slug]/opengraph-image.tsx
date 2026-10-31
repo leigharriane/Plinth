@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
+import { notFound } from "next/navigation";
 import { ImageResponse } from "next/og";
 import { caseStudies, findCaseStudy } from "@/lib/case-studies";
 import { staticColors } from "@/lib/static-colors";
@@ -7,12 +8,14 @@ import siteConfig from "@/site.config";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+// Every case study shares this file's metadata, so the page's generateMetadata sets its
+// own alt. This one only shows if that's ever taken out.
+export const alt = `${siteConfig.name} | Case study`;
 
 export function generateStaticParams() {
   return caseStudies.map((project) => ({ slug: project.caseStudy.slug }));
 }
 
-export const alt = "Case study";
 const colors = { ...staticColors.dark, accent: staticColors.accent };
 
 /** One social image per case study: the title, the category and the author's name. */
@@ -22,6 +25,7 @@ export default async function CaseStudyImage({
   params: Promise<{ slug: string }>;
 }) {
   const project = findCaseStudy((await params).slug);
+  if (!project) notFound();
   const font = await readFile(
     join(process.cwd(), "app/fonts/AlbertSans-SemiBold.ttf"),
   );
@@ -51,13 +55,13 @@ export default async function CaseStudyImage({
           fontSize: 28,
         }}
       >
-        {project?.category ?? "Case study"}
+        {project.category}
       </div>
       <div style={{ fontSize: 84, lineHeight: 1.1, letterSpacing: "-0.04em" }}>
-        {project?.title ?? siteConfig.name}
+        {project.title}
       </div>
-      <div style={{ display: "flex", fontSize: 32, color: "#a5a5a5" }}>
-        {siteConfig.name} · Case study
+      <div style={{ display: "flex", fontSize: 32, color: colors.fgMuted }}>
+        {siteConfig.name} | Case study
       </div>
     </div>,
     {

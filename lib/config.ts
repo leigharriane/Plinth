@@ -59,6 +59,12 @@ export type CaseStudy = {
   timeline: string;
   /** Tech used, shown as pills in the sidebar. */
   stack: string[];
+  /**
+   * The wide image under the summary. Leave it out to reuse the project's card `image`, or
+   * set `false` for none. It's shown at 16:10, like the card, but never taller than 60% of
+   * the screen, and then cropped from the bottom, so keep the important part near the top.
+   */
+  image?: Image | false;
   /** Headline numbers, shown big above the body. Keep it to three or four. */
   outcomes?: { value: string; label: string }[];
   /** The story, as headings, paragraphs, quotes and code blocks. */
