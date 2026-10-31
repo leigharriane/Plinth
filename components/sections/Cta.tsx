@@ -9,8 +9,9 @@ export function Cta() {
   const { email, cta } = siteConfig;
 
   return (
-    <section aria-labelledby="cta-heading">
-      <Container className="grid gap-8 py-section lg:grid-cols-2 lg:items-center lg:gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(0,36rem)]">
+    // The home page's ScrollReveal plays this, and shows it again if you leave before it plays.
+    <section id="contact" aria-labelledby="cta-heading" data-reveal>
+      <Container className="reveal-items grid gap-8 py-section lg:grid-cols-2 lg:items-center lg:gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(0,36rem)]">
         <h2
           id="cta-heading"
           className="text-display-cta font-semibold text-balance break-words"
@@ -24,7 +25,7 @@ export function Cta() {
           </p>
           <div className="flex flex-wrap items-center justify-between gap-6">
             <ButtonLink href={`mailto:${email}`}>
-              Let’s Talk
+              Let’s talk
               <ArrowUpRight aria-hidden {...arrowUpRight.inline} />
             </ButtonLink>
             <SocialLinks className="-mx-2" />

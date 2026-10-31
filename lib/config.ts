@@ -98,7 +98,7 @@ export type Project = {
 export type Experience = {
   /** Company name, e.g. "Acme Corp". */
   company: string;
-  /** Your job title there, e.g. "Junior Web Developer". */
+  /** Your job title there, e.g. "Junior Software Engineer". */
   role: string;
   /**
    * A square logo, as a path inside /public (e.g. "/images/logos/acme-corp.svg") or a
@@ -116,7 +116,7 @@ export type Experience = {
 export type SiteConfig = {
   /** Your full name. It shows up in the nav, page title, footer and favicon initials. */
   name: string;
-  /** Your job title, e.g. "Software Developer". Used in page metadata and the social preview image. */
+  /** Your job title, e.g. "Software Engineer". Used in page metadata and the social preview image. */
   role: string;
   /**
    * Your site's public URL, e.g. "https://your-domain.com". It's used for
@@ -125,7 +125,7 @@ export type SiteConfig = {
    * else? Set it, or those links will point at localhost.
    */
   url?: string;
-  /** Where the "Let’s Talk" buttons send mail, e.g. "you@example.com". */
+  /** Where the "Let’s talk" buttons send mail, e.g. "you@example.com". */
   email: string;
   /**
    * What the Resume button opens. "/resume" is a page built from this config (your
@@ -136,7 +136,7 @@ export type SiteConfig = {
   hero: {
     /** First line of the heading, e.g. "Hello! I am". */
     greeting: string;
-    /** Last line of the heading, e.g. "A Software Developer". */
+    /** Last line of the heading, e.g. "A Software Engineer". */
     tagline: string;
     /** Short paragraph under the heading. It's also the default meta description. */
     intro: string;
@@ -151,7 +151,7 @@ export type SiteConfig = {
   skills: string[];
   /** Words that scroll in large type above the experience section. Leave it empty to hide them. */
   techStack: string[];
-  /** Cards in the Recent Works carousel. Leave it empty to hide the section. */
+  /** Cards in the Recent work carousel. Leave it empty to hide the section. */
   projects: Project[];
   about: {
     /** One string per paragraph. */

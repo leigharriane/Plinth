@@ -1,6 +1,7 @@
 import { cn } from "@/lib/cn";
 import { iconSize } from "@/lib/icons";
 import { socialPlatforms } from "@/lib/social-icons";
+import { Roll } from "./Roll";
 import siteConfig from "@/site.config";
 
 /** Icon links for every entry in `socials`, with 44px hit areas around 20px brand marks. */
@@ -25,9 +26,11 @@ export function SocialLinks({ className }: { className?: string }) {
                 target: "_blank",
                 rel: "noopener noreferrer",
               })}
-              className="relative inline-flex size-11 items-center justify-center rounded-full transition-colors hover:bg-fg/10"
+              className="group relative inline-flex size-11 items-center justify-center rounded-full transition-colors hover:bg-fg/10"
             >
-              <Icon aria-hidden className={iconClassName ?? iconSize.brand} />
+              <Roll>
+                <Icon aria-hidden className={iconClassName ?? iconSize.brand} />
+              </Roll>
               <span className="sr-only">
                 {label ?? name}
                 {external && " (opens in a new tab)"}

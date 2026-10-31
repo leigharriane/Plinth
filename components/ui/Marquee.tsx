@@ -1,23 +1,20 @@
-"use client";
-
-import { Pause, Play } from "lucide-react";
-import { useState, type CSSProperties } from "react";
+import type { CSSProperties } from "react";
+import { MarqueePauseButton } from "@/components/ui/MarqueePauseButton";
 import { cn } from "@/lib/cn";
-import { iconSize } from "@/lib/icons";
 
 type Tone = "accent" | "plain";
 
-const tones: Record<Tone, { band: string; fade: string; button: string }> = {
+const tones: Record<Tone, { band: string; cap: string; button: string }> = {
   accent: {
     band: "bg-accent text-on-accent",
-    fade: "before:from-accent",
+    cap: "bg-accent before:from-accent",
     // The default ring color is the accent in light mode, which would vanish on this band.
-    button: "hover:bg-accent-hover focus-visible:outline-on-accent",
+    button: "focus-visible:outline-on-accent",
   },
   plain: {
     band: "bg-bg text-fg",
-    fade: "before:from-bg",
-    button: "hover:bg-surface",
+    cap: "bg-bg before:from-bg",
+    button: "",
   },
 };
 
@@ -33,8 +30,10 @@ type MarqueeProps = {
 
 /**
  * Endlessly scrolling text. Screen readers get the items once as a list; the moving
- * copy is hidden from them. It pauses on hover, with the button (WCAG 2.2.2), and is
- * replaced by a static, wrapping list when the visitor prefers reduced motion.
+ * copy is hidden from them. It pauses on hover, and a click or tap anywhere on the band
+ * toggles a pause that sticks (WCAG 2.2.2). It is replaced by a static, wrapping list
+ * when the visitor prefers reduced motion. It renders on the server; only the pause
+ * button is a client component.
  */
 export function Marquee({
   items,
@@ -43,8 +42,6 @@ export function Marquee({
   reverse = false,
   className,
 }: MarqueeProps) {
-  const [paused, setPaused] = useState(false);
-
   if (items.length === 0) return null;
 
   const text = `${items.join(" - ")} - `;
@@ -77,43 +74,21 @@ export function Marquee({
       <div
         aria-hidden
         style={style}
+        // Paused on hover, or while the pause button is pressed.
         className={cn(
-          "flex w-max shrink-0 animate-marquee group-hover:[animation-play-state:paused] motion-reduce:hidden",
+          "flex w-max shrink-0 animate-marquee group-hover:[animation-play-state:paused] group-has-[[aria-pressed=true]]:[animation-play-state:paused] motion-reduce:hidden",
           reverse && "[animation-direction:reverse]",
-          paused && "[animation-play-state:paused]",
         )}
       >
         <span className="whitespace-pre">{half}</span>
         <span className="whitespace-pre">{half}</span>
       </div>
 
-      {/* The text slides under a solid end cap so the button never sits on top of letters.
-          The padding is the carousel's inset minus the button's 10px around its icon, the
-          same overhang as the nav's -mr-2.5, so the pause icon lines up with the nav icons. */}
-      <div
-        className={cn(
-          "absolute inset-y-0 right-0 flex items-center bg-inherit pr-[calc(max(var(--spacing-gutter),(100%-var(--container-page))/2+var(--spacing-gutter))-0.625rem)] pl-2 motion-reduce:hidden",
-          "before:pointer-events-none before:absolute before:inset-y-0 before:right-full before:w-12 before:bg-linear-to-l before:to-transparent",
-          tones[tone].fade,
-        )}
-      >
-        <button
-          type="button"
-          aria-label={`Pause ${label.toLowerCase()} animation`}
-          aria-pressed={paused}
-          onClick={() => setPaused((value) => !value)}
-          className={cn(
-            "inline-flex size-11 items-center justify-center rounded-full transition-colors",
-            tones[tone].button,
-          )}
-        >
-          {paused ? (
-            <Play aria-hidden className={iconSize.control} />
-          ) : (
-            <Pause aria-hidden className={iconSize.control} />
-          )}
-        </button>
-      </div>
+      <MarqueePauseButton
+        label={label}
+        className={tones[tone].button}
+        capClassName={tones[tone].cap}
+      />
     </div>
   );
 }

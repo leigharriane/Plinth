@@ -5,7 +5,7 @@ export function Skills() {
   if (siteConfig.skills.length === 0) return null;
 
   return (
-    <section aria-labelledby="skills-heading">
+    <section aria-labelledby="skills-heading" data-reveal>
       <h2 id="skills-heading" className="sr-only">
         Skills
       </h2>
@@ -13,7 +13,7 @@ export function Skills() {
         items={siteConfig.skills}
         label="Skills"
         tone="accent"
-        className="py-3 text-marquee-md font-semibold"
+        className="reveal py-3 text-marquee-md font-semibold"
       />
     </section>
   );

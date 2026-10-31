@@ -35,12 +35,25 @@ export function Prose({ blocks }: { blocks: Block[] }) {
             );
           case "code":
             return (
-              <pre
+              // The ::after fade is as wide as the pre's right padding, so it only covers text
+              // while a long line runs under it. Scrolled to the end, or with nothing to
+              // scroll, it sits over empty padding. It stops short of the bottom padding,
+              // where a classic scrollbar would sit.
+              <div
                 key={index}
-                className="overflow-x-auto rounded-card bg-surface p-5 text-body/relaxed text-fg"
+                className="relative after:pointer-events-none after:absolute after:inset-y-5 after:right-px after:w-10 after:bg-linear-to-r after:from-surface/0 after:to-surface"
               >
-                <code>{block.text}</code>
-              </pre>
+                {/* Focusable so keyboard users can scroll long lines sideways; Safari doesn't
+                    focus scroll containers on its own. */}
+                <pre
+                  tabIndex={0}
+                  role="region"
+                  aria-label="Code sample"
+                  className="overflow-x-auto rounded-card border border-border-subtle bg-surface py-5 pr-10 pl-5 text-body/relaxed text-fg"
+                >
+                  <code>{block.text}</code>
+                </pre>
+              </div>
             );
         }
       })}

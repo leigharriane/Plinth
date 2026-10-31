@@ -2,18 +2,20 @@
 
 import { Menu, Search, X } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
+import { cn } from "@/lib/cn";
 import { iconSize } from "@/lib/icons";
 import { openCommandPalette } from "@/lib/command-palette";
-import { navLinks } from "@/lib/nav";
-import { useActiveSection } from "@/lib/use-active-section";
+import { visibleNavLinks } from "@/lib/nav";
+import { useNavCurrent } from "@/lib/use-active-section";
+import { SectionLink } from "./SectionLink";
 
 /** Disclosure menu for the primary links below the md breakpoint. */
-export function MobileMenu() {
+export function MobileMenu({ hasWorks }: { hasWorks: boolean }) {
   const [open, setOpen] = useState(false);
   const panelId = useId();
   const buttonRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
-  const active = useActiveSection();
+  const current = useNavCurrent();
 
   useEffect(() => {
     if (!open) return;
@@ -51,7 +53,8 @@ export function MobileMenu() {
   }, [open]);
 
   return (
-    <div className="md:hidden">
+    // The header reads this to go solid while the menu is open. See Nav.
+    <div data-menu-open={open || undefined} className="md:hidden">
       <button
         ref={buttonRef}
         type="button"
@@ -72,28 +75,32 @@ export function MobileMenu() {
         ref={panelRef}
         id={panelId}
         hidden={!open}
-        className="absolute inset-x-0 top-full border-b border-border bg-bg"
+        // The header is sticky, so page scroll can't reach a panel taller than the screen
+        // (400% zoom, landscape phones). It scrolls on its own below the 64px bar instead,
+        // and scroll-py-2 keeps a focused row's ring clear of the clipped edges.
+        className="absolute inset-x-0 top-full max-h-[calc(100dvh-4rem)] scroll-py-2 overflow-y-auto overscroll-contain border-b border-border bg-bg"
       >
         <nav aria-label="Primary">
           <ul className="flex flex-col px-gutter py-2">
-            {navLinks.map((link) => (
+            {visibleNavLinks(hasWorks).map((link) => (
               <li key={link.href}>
-                <a
+                <SectionLink
                   href={link.href}
-                  aria-current={
-                    active === link.href.slice(1) ? "location" : undefined
-                  }
+                  aria-current={current(link.href)}
                   onClick={() => setOpen(false)}
                   className="nav-marker flex min-h-12 items-center text-nav font-medium"
                 >
                   <span data-text={link.label}>{link.label}</span>
-                </a>
+                </SectionLink>
               </li>
             ))}
             {/* Phones have no search button in the bar, so the palette opens from here. */}
             <li className="mt-1 border-t border-border-subtle pt-1">
+              {/* Pulled out into the gutter so the hover fill has room around the label,
+                  while the icon stays in line with the links above. */}
               <button
                 type="button"
+                aria-haspopup="dialog"
                 onClick={() => {
                   setOpen(false);
                   // The palette hands focus back to whatever had it on close, and this
@@ -101,9 +108,12 @@ export function MobileMenu() {
                   buttonRef.current?.focus();
                   openCommandPalette();
                 }}
-                className="flex min-h-12 w-full items-center gap-3 text-nav font-medium text-fg-muted"
+                className="-mx-2 flex min-h-12 w-[calc(100%+1rem)] items-center gap-3 rounded-xl px-2 text-nav font-medium transition-colors hover:bg-fg/10"
               >
-                <Search aria-hidden className={iconSize.inline} />
+                <Search
+                  aria-hidden
+                  className={cn(iconSize.inline, "text-fg-muted")}
+                />
                 Jump to…
               </button>
             </li>

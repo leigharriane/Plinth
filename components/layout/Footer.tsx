@@ -1,33 +1,47 @@
 import { Cta } from "@/components/sections/Cta";
 import { Container } from "@/components/ui/Container";
 import { CurrentYear } from "@/components/ui/CurrentYear";
-import { navLinks } from "@/lib/nav";
+import { visibleNavLinks } from "@/lib/nav";
+import { SectionLink } from "./SectionLink";
 import siteConfig from "@/site.config";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border">
+    <footer className="print-hidden border-t border-border">
       <Cta />
       <div className="border-t border-border">
         <Container className="flex flex-col items-center gap-2 py-6 md:flex-row md:justify-between md:py-4">
           <nav aria-label="Footer">
             <ul className="flex flex-wrap justify-center gap-x-10">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="inline-flex min-h-11 min-w-11 items-center justify-center text-meta font-light decoration-1 underline-offset-4 hover:underline"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
+              {/* Not Contact: it's the section right above. */}
+              {visibleNavLinks(siteConfig.projects.length > 0)
+                .filter((link) => link.href !== "#contact")
+                .map((link) => (
+                  <li key={link.href}>
+                    <SectionLink
+                      href={link.href}
+                      className="link-marker inline-flex min-h-11 min-w-11 items-center justify-center text-meta font-normal"
+                    >
+                      <span>{link.label}</span>
+                    </SectionLink>
+                  </li>
+                ))}
             </ul>
           </nav>
-          <p className="text-center text-meta font-medium">
-            © <CurrentYear buildYear={new Date().getFullYear()} />{" "}
-            {siteConfig.name}. All Rights Reserved.
-          </p>
+          <div className="flex flex-col items-center gap-2 md:flex-row md:gap-6">
+            <p className="text-center text-meta font-medium">
+              © <CurrentYear buildYear={new Date().getFullYear()} />{" "}
+              {siteConfig.name}. All Rights Reserved. | Built with{" "}
+              {/* Underlined so it reads as a link without color (WCAG 1.4.1). The padding
+                  grows the tap target to 44px; the negative margin keeps it off the line height. */}
+              <a
+                href="https://github.com/leigharriane/Plinth"
+                className="link-marker -my-3.5 inline-flex py-3.5 underline decoration-border underline-offset-4"
+              >
+                <span>Plinth by Leigh Arriane</span>
+              </a>
+            </p>
+          </div>
         </Container>
       </div>
     </footer>

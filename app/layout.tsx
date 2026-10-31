@@ -47,14 +47,18 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={albertSans.variable} suppressHydrationWarning>
+    // data-scroll-behavior lets Next turn smooth scrolling off for route changes, so a
+    // new page starts at its top (or its #section) at once. Hash links on the page still glide.
+    <html
+      lang="en"
+      className={albertSans.variable}
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
       <body>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        {/* No disableTransitionOnChange: it restyles the whole page twice on every load.
+            Theme changes turn transitions off themselves (suppressTransitions). */}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <SkipLink />
           <Nav />
           <main id="main-content" tabIndex={-1} className="outline-none">

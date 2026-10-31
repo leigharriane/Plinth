@@ -6,8 +6,8 @@ import { defineConfig } from "@/lib/config";
  * editor to see what it does (the docs live in lib/config.ts).
  */
 export default defineConfig({
-  name: "Juan Dela Cruz",
-  role: "Software Developer",
+  name: "David Parker",
+  role: "Software Engineer",
   // Optional on Vercel. Uncomment and set this if you use a custom domain.
   // url: "https://your-domain.com",
   email: "hello@example.com",
@@ -16,7 +16,7 @@ export default defineConfig({
 
   hero: {
     greeting: "Hello! I am",
-    tagline: "A Software Developer",
+    tagline: "A Software Engineer",
     intro:
       "I build fast, accessible web apps from first sketch to launch. Right now it's scheduling tools for clinics. Open to new roles.",
     // The glow behind the heading follows the mouse a little. Use "static" to keep it still, or "off".
@@ -37,8 +37,8 @@ export default defineConfig({
     "Firebase",
     "Python",
     "Java",
-    "NodeJS",
-    "ReactJS",
+    "Node.js",
+    "React",
     "JavaScript",
   ],
 
@@ -70,7 +70,7 @@ export default defineConfig({
           "Tailwind CSS",
         ],
         outcomes: [
-          { value: "3.1×", label: "more enquiries per month" },
+          { value: "3.1×", label: "more inquiries per month" },
           { value: "1.4s", label: "mobile LCP, down from 5.2s" },
           { value: "100", label: "Lighthouse accessibility" },
         ],
@@ -78,12 +78,12 @@ export default defineConfig({
           { type: "h2", text: "The problem" },
           {
             type: "p",
-            text: "The agency's old site was a WordPress theme with a plugin for listings. Search took a full page load per filter, the map was an iframe, and agents were getting enquiries with no record of which property they were about.",
+            text: "The agency's old site was a WordPress theme with a plugin for listings. Search took a full page load per filter, the map was an iframe, and agents were getting inquiries with no record of which property they were about.",
           },
           { type: "h2", text: "What I built" },
           {
             type: "p",
-            text: "A Next.js app with server-rendered listing pages for SEO, a client-side map that filters as you pan, and a favorites list that works signed out (localStorage) and syncs when you sign in. Each enquiry form carries the listing id, so agents see context in their inbox.",
+            text: "A Next.js app with server-rendered listing pages for SEO, a client-side map that filters as you pan, and a favorites list that works signed out (localStorage) and syncs when you sign in. Each inquiry form carries the listing id, so agents see context in their inbox.",
           },
           {
             type: "code",
@@ -99,7 +99,7 @@ export default defineConfig({
           },
           {
             type: "quote",
-            text: "Enquiries tripled and, for the first time, we know which listing each one is about.",
+            text: "Inquiries tripled and, for the first time, we know which listing each one is about.",
             cite: "Agency owner",
           },
         ],
@@ -109,7 +109,7 @@ export default defineConfig({
       title: "Indie Game",
       description:
         "A small 2D platformer with hand-drawn levels, built over a weekend game jam.",
-      category: "Game Development",
+      category: "Game",
       year: 2024,
       tags: ["Godot", "GDScript"],
       image: {
@@ -135,7 +135,7 @@ export default defineConfig({
       title: "Habit Tracker App",
       description:
         "A cross-platform mobile app for building daily habits with streaks and reminders.",
-      category: "Mobile Application",
+      category: "Mobile app",
       year: 2023,
       tags: ["React Native", "Expo", "SQLite"],
       image: {
@@ -188,7 +188,7 @@ export default defineConfig({
   experience: [
     {
       company: "Acme Corp",
-      role: "Software Developer Intern",
+      role: "Software Engineer Intern",
       logo: "/images/logos/acme-corp.svg",
       start: "July 2022",
       end: "October 2022",
@@ -199,7 +199,7 @@ export default defineConfig({
     },
     {
       company: "Northwind Studio",
-      role: "Junior Web Developer",
+      role: "Junior Software Engineer",
       logo: "/images/logos/northwind-studio.svg",
       start: "January 2023",
       end: "December 2023",
@@ -210,7 +210,7 @@ export default defineConfig({
     },
     {
       company: "Brightline Labs",
-      role: "Software Developer",
+      role: "Software Engineer",
       logo: "/images/logos/brightline-labs.svg",
       start: "February 2024",
       end: "Present",
