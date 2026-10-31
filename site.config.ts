@@ -19,8 +19,10 @@ export default defineConfig({
     tagline: "A Software Engineer",
     intro:
       "I build fast, accessible web apps from first sketch to launch. Right now it's scheduling tools for clinics. Open to new roles.",
-    // The glow behind the heading follows the mouse a little. Use "static" to keep it still, or "off".
+    // The glow behind the heading follows the mouse across it. Use "static" to keep it still, or "off".
     // glow: "static",
+    // Your first three project images fan out at the bottom of the hero. Set false to hide them.
+    // peek: false,
   },
 
   skills: [

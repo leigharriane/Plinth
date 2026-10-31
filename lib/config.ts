@@ -79,7 +79,10 @@ export type Project = {
   year?: number | string;
   /** Tech you used, shown as small pills, e.g. ["React", "TypeScript"]. Up to 4 are shown; the rest become "+N". */
   tags?: string[];
-  /** Card thumbnail. Any aspect ratio works, but 16:10 fits best (e.g. 1280×800). */
+  /**
+   * Card thumbnail. Any aspect ratio works, but 16:10 fits best (e.g. 1280×800). The first
+   * three projects' images also fan out at the bottom of the hero, cropped to their top.
+   */
   image: Image;
   /** Adds a "Read case study" link to the card and a page at /works/<slug>. */
   caseStudy?: CaseStudy;
@@ -141,11 +144,18 @@ export type SiteConfig = {
     /** Short paragraph under the heading. It's also the default meta description. */
     intro: string;
     /**
-     * How the soft glow behind your heading behaves. `"pointer"` nudges it gently toward the
-     * visitor's mouse; `"static"` keeps it still; `"off"` removes it. Phones, tablets and
-     * visitors who prefer reduced motion always see the still glow. Defaults to `"pointer"`.
+     * How the soft glow behind your heading behaves. `"pointer"` drifts after the visitor's
+     * mouse and rests centered behind the heading when there's no mouse (phones, tablets) or
+     * the visitor prefers reduced motion. `"static"` keeps it still, low and off to the left
+     * of the heading. `"off"` removes it. Defaults to `"pointer"`.
      */
     glow?: "pointer" | "static" | "off";
+    /**
+     * Shows the first three project thumbnails fanned at the bottom of the hero, linking
+     * down to Recent work. It shows only the top of each image, so set it to `false` if
+     * your screenshots don't read well that small. Defaults to `true`.
+     */
+    peek?: boolean;
   };
   /** Words that scroll across the blue band under the hero. Leave it empty to hide the band. */
   skills: string[];
