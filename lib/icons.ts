@@ -30,4 +30,6 @@ export const arrowUpRight = {
   inline: { className: "-m-1 size-7!", strokeWidth: 10 / 7 },
   /** Standalone, like a 24px control icon: 34px box, 14.2px ink, 2px stroke. Fits a 44px target. */
   control: { className: "size-8.5", strokeWidth: 24 / 17 },
+  /** After a heading, scaling with its font: a 1em box, with a heavier stroke to sit with semibold text. */
+  title: { className: "size-[1em]", strokeWidth: 2.25 },
 } as const;
