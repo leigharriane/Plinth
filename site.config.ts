@@ -13,6 +13,8 @@ export default defineConfig({
   email: "hello@example.com",
   // "/resume" is a page built from this file. Use "/resume.pdf" for your own file, or null to hide the button.
   resume: "/resume",
+  // Shows your local time in the footer. Remove it to hide the clock.
+  timezone: "Asia/Manila",
 
   hero: {
     greeting: "Hello! I am",

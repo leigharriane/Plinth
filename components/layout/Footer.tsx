@@ -1,7 +1,9 @@
 import { Cta } from "@/components/sections/Cta";
 import { Container } from "@/components/ui/Container";
 import { CurrentYear } from "@/components/ui/CurrentYear";
+import { LocalTime } from "@/components/ui/LocalTime";
 import { visibleNavLinks } from "@/lib/nav";
+import { timeZone, timeZonePlace } from "@/lib/time-zone";
 import { SectionLink } from "./SectionLink";
 import siteConfig from "@/site.config";
 
@@ -29,6 +31,13 @@ export function Footer() {
             </ul>
           </nav>
           <div className="flex flex-col items-center gap-2 md:flex-row md:gap-6">
+            {timeZone && timeZonePlace && (
+              <LocalTime
+                timeZone={timeZone}
+                place={timeZonePlace}
+                className="text-meta font-normal text-fg-muted tabular-nums"
+              />
+            )}
             <p className="text-center text-meta font-medium">
               © <CurrentYear buildYear={new Date().getFullYear()} />{" "}
               {siteConfig.name}. All Rights Reserved. | Built with{" "}
