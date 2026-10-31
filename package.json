@@ -11,7 +11,8 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "lighthouse": "npx --yes @lhci/cli@0.15.1 autorun"
   },
   "engines": {
     "node": ">=20.9.0"

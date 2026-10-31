@@ -7,5 +7,10 @@ export default defineConfig([
   ...nextVitals,
   ...nextTs,
   prettier,
+  // CommonJS config files, like lighthouserc.cjs, load their dependencies with require().
+  {
+    files: ["**/*.cjs"],
+    rules: { "@typescript-eslint/no-require-imports": "off" },
+  },
   globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts"]),
 ]);
