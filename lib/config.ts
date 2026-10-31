@@ -142,6 +142,12 @@ export type SiteConfig = {
    * e.g. "/resume.pdf", downloads that file instead. Set it to null to hide the button.
    */
   resume: "/resume" | (string & {}) | null;
+  /**
+   * Your time zone, e.g. "Asia/Manila". The footer shows your local time ("3:42 PM in
+   * Manila"), so visitors can tell when you're likely to reply. Use a name from the list at
+   * https://en.wikipedia.org/wiki/List_of_tz_database_time_zones. Leave it out to hide it.
+   */
+  timezone?: string;
   hero: {
     /** First line of the heading, e.g. "Hello! I am". */
     greeting: string;
