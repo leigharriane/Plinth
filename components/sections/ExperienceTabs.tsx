@@ -103,7 +103,7 @@ export function ExperienceTabs({ jobs }: { jobs: Experience[] }) {
           <p className="text-subtitle font-semibold">
             {job.start} - {job.end}
           </p>
-          <div className="mt-block max-w-[38rem] space-y-[1em] text-lead font-normal text-fg-muted">
+          <div className="mt-stack max-w-[38rem] space-y-[1em] text-lead font-normal text-fg-muted">
             {job.description.map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
             ))}
