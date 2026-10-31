@@ -11,6 +11,8 @@ export default defineConfig({
   // Optional on Vercel. Uncomment and set this if you use a custom domain.
   // url: "https://your-domain.com",
   email: "hello@example.com",
+  // Optional. Where you're based.
+  location: "Manila, Philippines",
   // "/resume" is a page built from this file. Use "/resume.pdf" for your own file, or null to hide the button.
   resume: "/resume",
   // Shows your local time in the footer. Remove it to hide the clock.
@@ -236,4 +238,22 @@ export default defineConfig({
     { platform: "facebook", url: "https://www.facebook.com/" },
     { platform: "discord", url: "https://discord.com/" },
   ],
+
+  // The command palette doubles as a terminal. Open it with ⌘K and type help. All optional.
+  terminal: {
+    // What `status` prints. Change it to yours, or remove it to drop the command.
+    status: "Open to new roles.",
+    // The day your site went live, for the uptime in `neofetch`. Set yours, or remove it.
+    launched: "2026-10-30",
+    // prompt: "david@plinth ~ $",
+    // jokes: ["Your own one-liners for the joke command."],
+    // Your own commands. Each one prints text, opens a link, or runs a built-in.
+    commands: [
+      { name: "hire", description: "How to hire me", run: "email" },
+      // { name: "blog", description: "Read my blog", href: "https://example.com/blog" },
+      // { name: "hello", description: "Say hi", print: "Hi! Thanks for stopping by." },
+    ],
+    // Turn off any built-in you don't want, e.g. disable: ["rm", "sudo"]. `whatsnew`
+    // reads CHANGELOG.md, so add it here if your changelog isn't about your site.
+  },
 });

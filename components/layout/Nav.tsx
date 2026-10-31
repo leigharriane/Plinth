@@ -1,5 +1,11 @@
 import { Container } from "@/components/ui/Container";
 import { caseStudies } from "@/lib/case-studies";
+import { cn } from "@/lib/cn";
+import type { CommandPaletteData } from "@/lib/command-palette";
+import { iconSize } from "@/lib/icons";
+import { paletteProjects } from "@/lib/palette-projects";
+import { socialPlatforms } from "@/lib/social-icons";
+import { terminalData } from "@/lib/terminal-data";
 import siteConfig from "@/site.config";
 import { CommandPalette } from "./CommandPalette";
 import { MobileMenu } from "./MobileMenu";
@@ -16,6 +22,33 @@ const caseStudyTitles = Object.fromEntries(
     project.title,
   ]),
 );
+
+// Only what the palette shows, with each configured mark rendered here, so the browser
+// gets those few SVGs as markup instead of the whole icon set as code.
+const paletteData: CommandPaletteData = {
+  email: siteConfig.email,
+  resume: siteConfig.resume,
+  hasWorks,
+  hasExperience: siteConfig.experience.length > 0,
+  socials: siteConfig.socials
+    .filter((social) => social.platform !== "email")
+    .map((social) => {
+      const { name, Icon, iconClassName } = socialPlatforms[social.platform];
+      return {
+        id: `social-${social.platform}-${social.url}`,
+        label: social.label ?? name,
+        url: social.url,
+        icon: (
+          <Icon
+            aria-hidden
+            className={iconClassName ?? cn(iconSize.brand, "shrink-0")}
+          />
+        ),
+      };
+    }),
+  projects: paletteProjects,
+  terminal: terminalData,
+};
 
 export function Nav() {
   return (
@@ -51,7 +84,7 @@ export function Nav() {
         <NavLinks hasWorks={hasWorks} />
 
         <div className="-mr-2.5 flex shrink-0 items-center justify-end gap-1 md:flex-1 md:basis-0">
-          <CommandPalette />
+          <CommandPalette data={paletteData} />
           <ThemeToggle />
           <MobileMenu hasWorks={hasWorks} />
         </div>
