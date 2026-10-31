@@ -122,6 +122,61 @@ export type Experience = {
   description: string[];
 };
 
+/** The palette terminal's built-in commands that can be turned off. */
+export type TerminalBuiltin =
+  | "whoami"
+  | "ls"
+  | "cd"
+  | "open"
+  | "cat"
+  | "email"
+  | "status"
+  | "stack"
+  | "theme"
+  | "date"
+  | "whatsnew"
+  | "neofetch"
+  | "joke"
+  | "secrets"
+  | "sudo"
+  | "rm"
+  | "matrix"
+  | "coffee"
+  | "vim"
+  | "ping"
+  | "cowsay"
+  | "sl";
+
+/** A command of your own for the palette terminal. It prints text, opens a link, or runs a built-in. */
+export type TerminalCommand = {
+  /**
+   * What visitors type, e.g. "blog". One lowercase word: letters, numbers, "-" and "_".
+   * A built-in with the same name is replaced. help, clear and exit are the terminal's
+   * own, so they can't be used. The build stops with a message if a name breaks a rule.
+   */
+  name: string;
+  /** One line for `help` and the Run row, e.g. "Read my blog". */
+  description: string;
+  /** Leaves it out of `help` and partial matches, so it has to be typed in full. For easter eggs. */
+  hidden?: boolean;
+} & (
+  | {
+      /** Text to print. Use "\n" for a new line. */
+      print: string;
+    }
+  | {
+      /**
+       * Where to go: a path on this site like "/resume", a home page section like
+       * "#about", or a full URL, which opens in a new tab.
+       */
+      href: string;
+    }
+  | {
+      /** A built-in to run under this name, e.g. "email" for a `hire` command. */
+      run: TerminalBuiltin;
+    }
+);
+
 export type SiteConfig = {
   /** Your full name. It shows up in the nav, page title, footer and favicon initials. */
   name: string;
@@ -136,6 +191,11 @@ export type SiteConfig = {
   url?: string;
   /** Where the "Let’s talk" buttons send mail, e.g. "you@example.com". */
   email: string;
+  /**
+   * Where you're based, e.g. "Manila, Philippines". The palette's terminal shows it in
+   * `whoami` and `date`. Leave it out to show none.
+   */
+  location?: string;
   /**
    * What the Resume button opens. "/resume" is a page built from this config (your
    * experience and skills, printable and saveable as a PDF). A path inside /public,
@@ -203,6 +263,36 @@ export type SiteConfig = {
    * GitHub profile URL to show your contributions and repos in the about section.
    */
   socials: Social[];
+  /**
+   * The command palette doubles as a small terminal: type `help` in it to see the
+   * commands. Everything here is optional.
+   */
+  terminal?: {
+    /** Set to `false` to turn the terminal off. The palette keeps working as before. */
+    enabled?: boolean;
+    /**
+     * Shown before each command. Defaults to your first name, e.g. "david@plinth ~ $". The
+     * "name@host" part also heads `neofetch`.
+     */
+    prompt?: string;
+    /** What `status` prints, e.g. "Open to new roles.". Leave it out and there's no `status`. */
+    status?: string;
+    /**
+     * The day your site went live, as "YYYY-MM-DD", e.g. "2026-10-30", for the uptime in
+     * `neofetch`. Leave it out to hide the uptime.
+     */
+    launched?: string;
+    /** Lines for `joke` and `fortune`. Leave it out, or empty, to use the built-in programmer jokes. */
+    jokes?: string[];
+    /**
+     * Built-in commands to turn off, e.g. `["sudo", "rm"]`. Turning off one turns off its
+     * other names too, so "joke" takes `fortune` with it. `whatsnew` prints the newest
+     * entries in CHANGELOG.md, so turn it off if your fork's changelog isn't about your site.
+     */
+    disable?: TerminalBuiltin[];
+    /** Commands of your own. Each one prints text, opens a link, or runs a built-in. */
+    commands?: TerminalCommand[];
+  };
   /** Optional search and link preview settings. */
   seo?: {
     /** The description in search results and link previews. Leave it out to use `hero.intro`. */
