@@ -1,6 +1,13 @@
 # Plinth
 
-A clean, accessible developer portfolio you make your own by editing one file. It's built with Next.js, TypeScript and Tailwind CSS, and there's no backend, no API keys and no environment variables to set up.
+**A developer portfolio you make your own by editing one file.**
+
+[![npm](https://img.shields.io/npm/v/create-plinthfolio?label=create-plinthfolio&color=0019ff)](https://www.npmjs.com/package/create-plinthfolio)
+[![Release](https://img.shields.io/github/v/release/leigharriane/Plinth?color=0019ff)](https://github.com/leigharriane/Plinth/releases)
+[![Lighthouse](https://github.com/leigharriane/Plinth/actions/workflows/lighthouse.yml/badge.svg)](https://github.com/leigharriane/Plinth/actions/workflows/lighthouse.yml)
+[![License: MIT](https://img.shields.io/github/license/leigharriane/Plinth?color=0019ff)](LICENSE)
+
+A clean, accessible portfolio for developers. Your name, projects, experience and links all come from one typed config file, and the rest is done for you: light and dark themes, case study pages, a resume page, a command palette, social previews and a sitemap. There's no backend, no API keys and no environment variables to set up. Built on Next.js 16, React 19, Tailwind CSS 4 and TypeScript.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/screenshot-dark.png" />
@@ -9,7 +16,19 @@ A clean, accessible developer portfolio you make your own by editing one file. I
 
 **Live demo:** [plinthfolio.vercel.app](https://plinthfolio.vercel.app)
 
+## Quick start
+
+```bash
+npx create-plinthfolio my-site
+cd my-site
+npm run dev
+```
+
+That asks for your name, what you do and your email, fills them into a fresh copy of Plinth, and installs everything. Open `plinth.config.ts`, make it yours, and push to Vercel. Or skip the command and deploy a copy straight from GitHub:
+
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fleigharriane%2FPlinth&project-name=plinth&repository-name=plinth)
+
+You'll need Node.js 20.9 or later.
 
 ## Features
 
@@ -27,15 +46,7 @@ A clean, accessible developer portfolio you make your own by editing one file. I
 
 ## Customize in 3 steps
 
-1. **Get your own copy.** The quickest way is one command, which asks for your name, what you do and your email, then copies Plinth into a new folder with those filled in, starts a git repository and installs everything:
-
-   ```bash
-   npx create-plinthfolio my-site
-   cd my-site
-   npm run dev
-   ```
-
-   Or click **Use this template** on GitHub, or the Deploy button above, which copies the repo for you. Then clone it, `npm install` and `npm run dev`.
+1. **Get your own copy.** Run `npx create-plinthfolio my-site` as above. It copies Plinth into a new folder with your name, role and email filled in, starts a git repository and installs everything. Or click **Use this template** on GitHub, or the Deploy button above, which copies the repo for you. Then clone it, `npm install` and `npm run dev`.
 
 2. **Make it yours.** Put your name, links, projects and experience in `plinth.config.ts`. Then swap out the placeholder files in `public/`:
 
@@ -95,8 +106,6 @@ Built one? Add it to this list. And if you'd like to say so on your own repo, he
 
 ## Development
 
-You'll need Node.js 20.9 or later.
-
 | Command                | What it does                                                                                             |
 | ---------------------- | -------------------------------------------------------------------------------------------------------- |
 | `npm run dev`          | Starts the dev server on localhost:3000.                                                                 |
@@ -118,6 +127,12 @@ Two GitHub Actions run on their own. On every pull request, [Lighthouse](.github
 
 On every merge into `main`, [release-please](.github/workflows/release-please.yml) keeps a release PR open with the next version and its notes. Merge that PR when you're ready and it bumps the version, updates `CHANGELOG.md` and publishes the GitHub release. It writes the notes from your commit titles, so start them with `feat:`, `fix:`, `docs:` and so on. Only features, fixes, performance and docs make it into the notes. The terminal's `whatsnew` command reads that same changelog.
 
+## Contributing
+
+Found a bug or have an idea? [Open an issue](https://github.com/leigharriane/Plinth/issues). Pull requests are welcome too. Before you open one, run `npm run format`, `npm run lint`, `npm run typecheck` and `npm run build`, and keep the commit title in the `feat:` / `fix:` / `docs:` form so release-please can write the notes. Anything that changes how the page looks should hold up in both themes, from the keyboard, and at phone width. The Lighthouse check on the PR will tell you if a budget slipped.
+
+Built a site on Plinth? Add it to the list above in a PR.
+
 ## License
 
-[MIT](LICENSE)
+[MIT](LICENSE). Use it for your own site, no credit required, though the footer's Built with Plinth link is a nice way to say thanks.
