@@ -7,7 +7,7 @@ import { Container } from "@/components/ui/Container";
 import { CurrentYear } from "@/components/ui/CurrentYear";
 import { getContributions, githubUsername } from "@/lib/github-contributions";
 import { getRecentRepos } from "@/lib/github-repos";
-import siteConfig from "@/site.config";
+import siteConfig from "@/plinth.config";
 
 /**
  * Who you are, then your GitHub activity: the last 9 months of contributions and your

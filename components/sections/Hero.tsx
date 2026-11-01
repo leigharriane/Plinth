@@ -6,7 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { PointerStage } from "@/components/ui/PointerStage";
 import { ShortcutHint } from "@/components/ui/ShortcutHint";
 import { cn } from "@/lib/cn";
-import siteConfig from "@/site.config";
+import siteConfig from "@/plinth.config";
 
 // Full accent only in dark mode, where it reads as light. On the light background it
 // reads as a dark stain, and the heading over its middle drops to about 2.5:1, so light

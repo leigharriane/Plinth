@@ -1,6 +1,6 @@
 /**
- * Types for `site.config.ts`. You shouldn't need to edit this file. Change
- * your content in `site.config.ts`, and these types will tell you if
+ * Types for `plinth.config.ts`. You shouldn't need to edit this file. Change
+ * your content in `plinth.config.ts`, and these types will tell you if
  * anything's missing or misspelled.
  */
 
@@ -300,7 +300,7 @@ export type SiteConfig = {
   };
 };
 
-/** Gives `site.config.ts` full type checking and autocomplete. It returns your config unchanged. */
+/** Gives `plinth.config.ts` full type checking and autocomplete. It returns your config unchanged. */
 export function defineConfig(config: SiteConfig): SiteConfig {
   return config;
 }

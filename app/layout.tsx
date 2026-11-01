@@ -6,7 +6,7 @@ import { SkipLink } from "@/components/layout/SkipLink";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { siteUrl } from "@/lib/site-url";
 import { staticColors } from "@/lib/static-colors";
-import siteConfig from "@/site.config";
+import siteConfig from "@/plinth.config";
 import "./globals.css";
 
 const albertSans = Albert_Sans({

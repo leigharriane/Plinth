@@ -2,7 +2,7 @@ import { ArrowDown } from "lucide-react";
 import Image from "next/image";
 import { cn } from "@/lib/cn";
 import { projectImageSizes, skipOptimizer } from "@/lib/image";
-import siteConfig from "@/site.config";
+import siteConfig from "@/plinth.config";
 
 /*
  * Poses by project count. Three: the outer two tilt away from the middle one, which sits

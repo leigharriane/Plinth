@@ -5,7 +5,7 @@ import { LocalTime } from "@/components/ui/LocalTime";
 import { visibleNavLinks } from "@/lib/nav";
 import { timeZone, timeZonePlace } from "@/lib/time-zone";
 import { SectionLink } from "./SectionLink";
-import siteConfig from "@/site.config";
+import siteConfig from "@/plinth.config";
 
 export function Footer() {
   return (

@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { staticColors } from "@/lib/static-colors";
-import siteConfig from "@/site.config";
+import siteConfig from "@/plinth.config";
 
 export const size = { width: 64, height: 64 };
 export const contentType = "image/png";

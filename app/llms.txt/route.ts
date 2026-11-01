@@ -1,7 +1,7 @@
 import { caseStudies } from "@/lib/case-studies";
 import { socialPlatforms } from "@/lib/social-icons";
 import { siteUrl } from "@/lib/site-url";
-import siteConfig from "@/site.config";
+import siteConfig from "@/plinth.config";
 
 // Built once at build time, like the sitemap.
 export const dynamic = "force-static";

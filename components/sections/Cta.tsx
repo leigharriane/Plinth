@@ -3,7 +3,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SocialLinks } from "@/components/ui/SocialLinks";
 import { arrowUpRight } from "@/lib/icons";
-import siteConfig from "@/site.config";
+import siteConfig from "@/plinth.config";
 
 export function Cta() {
   const { email, cta } = siteConfig;

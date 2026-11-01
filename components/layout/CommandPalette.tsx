@@ -46,7 +46,7 @@ function useShortcutLabel() {
  * The ⌘K / Ctrl+K palette's always-loaded part: the "Jump to…" button, the shortcut and
  * the open state. A request that lands before the dialog has downloaded stays open, so
  * the dialog shows itself as soon as it arrives. `data` comes from the server Nav, so
- * `site.config.ts` and the brand icon set never reach the browser for this.
+ * `plinth.config.ts` and the brand icon set never reach the browser for this.
  */
 export function CommandPalette({ data }: { data: CommandPaletteData }) {
   const [open, setOpen] = useState(false);

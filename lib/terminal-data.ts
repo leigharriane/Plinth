@@ -1,5 +1,5 @@
 import nextPackage from "next/package.json";
-import siteConfig from "@/site.config";
+import siteConfig from "@/plinth.config";
 import { readReleases } from "./changelog";
 import { pageSections } from "./nav";
 import { paletteProjects } from "./palette-projects";
@@ -29,7 +29,7 @@ const sections = pageSections(
 );
 
 function fail(message: string): never {
-  throw new Error(`site.config.ts: ${message}`);
+  throw new Error(`plinth.config.ts: ${message}`);
 }
 
 /**

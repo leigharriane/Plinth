@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { ShortcutHint } from "@/components/ui/ShortcutHint";
-import siteConfig from "@/site.config";
+import siteConfig from "@/plinth.config";
 
 // Next adds the noindex robots tag to 404s on its own.
 export const metadata: Metadata = {

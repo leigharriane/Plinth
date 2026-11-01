@@ -6,7 +6,7 @@ import { iconSize } from "@/lib/icons";
 import { paletteProjects } from "@/lib/palette-projects";
 import { socialPlatforms } from "@/lib/social-icons";
 import { terminalData } from "@/lib/terminal-data";
-import siteConfig from "@/site.config";
+import siteConfig from "@/plinth.config";
 import { CommandPalette } from "./CommandPalette";
 import { MobileMenu } from "./MobileMenu";
 import { NavLinks } from "./NavLinks";

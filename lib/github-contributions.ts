@@ -1,4 +1,4 @@
-import siteConfig from "@/site.config";
+import siteConfig from "@/plinth.config";
 
 export type ContributionDay = {
   date: string;
