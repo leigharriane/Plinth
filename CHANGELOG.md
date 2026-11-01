@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.1](https://github.com/leigharriane/Plinth/compare/v0.4.0...v0.4.1) (2026-11-01)
+
+
+### Docs
+
+* drop the template-repository hedge now that the setting is on ([84a9c27](https://github.com/leigharriane/Plinth/commit/84a9c27a8d8fe6cf864bf992571a13b401418db3))
+* drop the template-repository hedge now that the setting is on ([ff31971](https://github.com/leigharriane/Plinth/commit/ff31971f05e65f634cdbef1f8475c0d6bbc3ee5a))
+
 ## [0.4.0](https://github.com/leigharriane/Plinth/compare/v0.3.1...v0.4.0) (2026-11-01)
 
 
