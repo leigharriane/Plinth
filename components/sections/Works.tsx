@@ -15,6 +15,7 @@ export function Works() {
       {/* Left-aligned to match the About and Experience labels. */}
       <Carousel
         label="Projects"
+        itemLabel="project"
         header={
           <h2 id="works-heading" className="reveal text-h2 font-semibold">
             Recent work
