@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.1](https://github.com/leigharriane/Plinth/compare/v0.3.0...v0.3.1) (2026-11-01)
+
+
+### Fixes
+
+* normalize the scaffolder's repository URL so npm stops warning on publish ([80df94c](https://github.com/leigharriane/Plinth/commit/80df94cc65f30107ab2a970c38422fd720aabd59))
+* normalize the scaffolder's repository URL so npm stops warning on publish ([2afa5ca](https://github.com/leigharriane/Plinth/commit/2afa5ca90cdb6c52dd75a7b89db10faf245f9aa0))
+
 ## [0.3.0](https://github.com/leigharriane/Plinth/compare/v0.2.0...v0.3.0) (2026-11-01)
 
 
