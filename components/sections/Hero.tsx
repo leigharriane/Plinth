@@ -61,7 +61,7 @@ export function Hero() {
           {/* One block of text with forced breaks, not three block spans, so the whole name
               is a single LCP candidate. The spaces keep the plain text readable ("I am David"). */}
           {hero.greeting} <br aria-hidden />
-          {name} <br aria-hidden />
+          {hero.name ?? name} <br aria-hidden />
           {hero.tagline}
         </h1>
 

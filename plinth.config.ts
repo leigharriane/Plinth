@@ -25,8 +25,10 @@ export default defineConfig({
   },
 
   hero: {
-    greeting: "Hello! I am",
-    tagline: "A Software Engineer",
+    greeting: "Hello! I'm",
+    // Optional. The middle line. Leave it out to use the `name` at the top.
+    name: "David Parker",
+    tagline: "Software Engineer",
     intro:
       "I build fast, accessible web apps from first sketch to launch. Right now it's scheduling tools for clinics. Open to new roles.",
     // The glow behind the heading follows the mouse across it. Use "static" to keep it still, or "off".

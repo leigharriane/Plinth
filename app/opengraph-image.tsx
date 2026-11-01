@@ -13,7 +13,7 @@ const colors = { ...staticColors.dark, accent: staticColors.accent };
 
 export default async function OpengraphImage() {
   const { name, hero, skills } = siteConfig;
-  const lines = [hero.greeting, name, hero.tagline];
+  const lines = [hero.greeting, hero.name ?? name, hero.tagline];
   const band = skills.join(" | ");
   // Bundled as TTF (next/og can't read woff2) so the build never needs the network.
   const font = await readFile(

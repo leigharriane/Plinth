@@ -212,7 +212,13 @@ export type SiteConfig = {
   hero: {
     /** First line of the heading, e.g. "Hello! I am". */
     greeting: string;
-    /** Last line of the heading, e.g. "A Software Engineer". */
+    /**
+     * Middle line of the heading, e.g. "David Parker". Leave it out to use your `name`. Set it
+     * to show something else here, like a first name or a nickname, without changing your
+     * name everywhere else (metadata, footer, resume).
+     */
+    name?: string;
+    /** Last line of the heading, e.g. "Software engineer". */
     tagline: string;
     /** Short paragraph under the heading. It's also the default meta description. */
     intro: string;
