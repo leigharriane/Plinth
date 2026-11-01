@@ -57,7 +57,7 @@ export async function About() {
               <ContributionGraph data={contributions} compact months={9} />
             )}
             {repos.length > 0 && (
-              <InfoCard title="Recently pushed">
+              <InfoCard title="Latest repos">
                 <RecentRepoList repos={repos} />
               </InfoCard>
             )}

@@ -25,7 +25,7 @@ export function Cta() {
           </p>
           <div className="flex flex-wrap items-center justify-between gap-6">
             <ButtonLink href={`mailto:${email}`}>
-              Let’s talk
+              {"Let's talk"}
               <ArrowUpRight aria-hidden {...arrowUpRight.inline} />
             </ButtonLink>
             <SocialLinks className="-mx-2" />

@@ -72,7 +72,7 @@ export type CaseStudy = {
 };
 
 export type Project = {
-  /** Card heading, e.g. "Habit Tracker App". */
+  /** Card heading, e.g. "Habit tracker". */
   title: string;
   /**
    * One or two sentences under the title. Say what it does or what you built. Keep it
@@ -190,7 +190,7 @@ export type SiteConfig = {
    * else? Set it, or those links will point at localhost.
    */
   url?: string;
-  /** Where the "Let’s talk" buttons send mail, e.g. "you@example.com". */
+  /** Where the "Let's talk" buttons send mail, e.g. "you@example.com". */
   email: string;
   /**
    * Where you're based, e.g. "Manila, Philippines". The palette's terminal shows it in
@@ -210,7 +210,7 @@ export type SiteConfig = {
    */
   timezone?: string;
   hero: {
-    /** First line of the heading, e.g. "Hello! I am". */
+    /** First line of the heading, e.g. "Hi, I'm". */
     greeting: string;
     /**
      * Middle line of the heading, e.g. "David Parker". Leave it out to use your `name`. Set it
@@ -260,7 +260,7 @@ export type SiteConfig = {
   experience: Experience[];
   /** The closing section above the footer. */
   cta: {
-    /** Large heading, e.g. "Let’s work together". */
+    /** Large heading, e.g. "Looking for my next team". */
     heading: string;
     /** Short paragraph next to the heading. */
     text: string;

@@ -664,7 +664,7 @@ const builtins: Command[] = [
   {
     name: "joke",
     aliases: ["fortune"],
-    description: "A random one liner",
+    description: "A random one-liner",
     secrets: ["joke"],
     run: (_args, { data }) => {
       const { jokes } = data;
@@ -846,7 +846,7 @@ const builtins: Command[] = [
   {
     name: "exit",
     aliases: [":q"],
-    description: "Close the palette",
+    description: "Close the terminal",
     run: () => ({ output: [], close: true }),
   },
 ];

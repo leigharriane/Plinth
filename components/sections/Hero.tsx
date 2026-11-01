@@ -71,7 +71,7 @@ export function Hero() {
 
         <div className="flex flex-wrap justify-center gap-2.5">
           <ButtonLink href={`mailto:${email}`}>
-            Let’s talk
+            {"Let's talk"}
             <ArrowRight aria-hidden />
           </ButtonLink>
           {resume === "/resume" ? (
