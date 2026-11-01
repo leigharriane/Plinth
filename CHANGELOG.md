@@ -1,5 +1,29 @@
 # Changelog
 
+## [0.3.0](https://github.com/leigharriane/Plinth/compare/v0.2.0...v0.3.0) (2026-11-01)
+
+
+### Features
+
+* add create-plinthfolio to start a site with one command ([64b22b6](https://github.com/leigharriane/Plinth/commit/64b22b6bd16159f00d7638bdb8b75e83a93faf31))
+* add hero.name to show a different name in the hero ([fac3c30](https://github.com/leigharriane/Plinth/commit/fac3c30f172753720035298ba810f78813b160c6))
+* give the favicon a terminal cursor ([62cbb69](https://github.com/leigharriane/Plinth/commit/62cbb693eb4843c3c990eb0e189d88885b2d48a7))
+* Plinth branding, config rename and create-plinthfolio ([8e38d60](https://github.com/leigharriane/Plinth/commit/8e38d60f6097150bfd8fc430556f250fd025757d))
+* sign sites with a quiet Plinth credit ([3aab59a](https://github.com/leigharriane/Plinth/commit/3aab59a6a0290f56c93f5fa1cd95b6fe5d3daadf))
+
+
+### Fixes
+
+* name the carousel arrows after one project ([aa9acef](https://github.com/leigharriane/Plinth/commit/aa9aceff74afc720855e3b6de958a9cb406fc516))
+* plainer copy across the site and the demo config ([cfaacba](https://github.com/leigharriane/Plinth/commit/cfaacba202f76252e31308d1a5c88b3b1175ff6a))
+
+
+### Docs
+
+* add Built with Plinth to the README and a social preview image ([8d0f414](https://github.com/leigharriane/Plinth/commit/8d0f414543efc4c4f427b819c8b981a23f74b6b8))
+* render the social preview in Albert Sans with the GitHub handle ([d0150f3](https://github.com/leigharriane/Plinth/commit/d0150f314e329f5ead7a404e5b4e8bf46248f19a))
+* render the social preview in Albert Sans with the GitHub handle ([6ab2d6d](https://github.com/leigharriane/Plinth/commit/6ab2d6d01f8cb86cfd3fb20cf9b133ae2e2c0d8e))
+
 ## [0.2.0](https://github.com/leigharriane/Plinth/compare/v0.1.0...v0.2.0) (2026-10-31)
 
 
