@@ -3,7 +3,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SocialLinks } from "@/components/ui/SocialLinks";
 import { arrowUpRight } from "@/lib/icons";
-import siteConfig from "@/site.config";
+import siteConfig from "@/plinth.config";
 
 export function Cta() {
   const { email, cta } = siteConfig;
@@ -25,7 +25,7 @@ export function Cta() {
           </p>
           <div className="flex flex-wrap items-center justify-between gap-6">
             <ButtonLink href={`mailto:${email}`}>
-              Let’s talk
+              {"Let's talk"}
               <ArrowUpRight aria-hidden {...arrowUpRight.inline} />
             </ButtonLink>
             <SocialLinks className="-mx-2" />

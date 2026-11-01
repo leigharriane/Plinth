@@ -1,6 +1,6 @@
 import { ProjectCard } from "@/components/sections/ProjectCard";
 import { Carousel } from "@/components/ui/Carousel";
-import siteConfig from "@/site.config";
+import siteConfig from "@/plinth.config";
 
 export function Works() {
   if (siteConfig.projects.length === 0) return null;
@@ -15,6 +15,7 @@ export function Works() {
       {/* Left-aligned to match the About and Experience labels. */}
       <Carousel
         label="Projects"
+        itemLabel="project"
         header={
           <h2 id="works-heading" className="reveal text-h2 font-semibold">
             Recent work

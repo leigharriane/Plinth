@@ -17,12 +17,20 @@ export default defineConfig({
   resume: "/resume",
   // Shows your local time in the footer. Remove it to hide the clock.
   timezone: "Asia/Manila",
+  // Optional. What search results and link previews say about the site. Leave it out to use `hero.intro`.
+  seo: {
+    description: "A developer portfolio you make your own by editing one file.",
+    // The publisher line on link previews. This one is the demo's, so remove it on your own site.
+    siteName: "Plinth by Leigh Arriane",
+  },
 
   hero: {
-    greeting: "Hello! I am",
-    tagline: "A Software Engineer",
+    greeting: "Hello! I'm",
+    // Optional. The middle line. Leave it out to use the `name` at the top.
+    name: "David Parker",
+    tagline: "Software Engineer",
     intro:
-      "I build fast, accessible web apps from first sketch to launch. Right now it's scheduling tools for clinics. Open to new roles.",
+      "I write code for a living and for fun, usually something on the side just to see if I can. Currently looking for a new team.",
     // The glow behind the heading follows the mouse across it. Use "static" to keep it still, or "off".
     // glow: "static",
     // Your first three project images fan out at the bottom of the hero. Set false to hide them.
@@ -30,10 +38,10 @@ export default defineConfig({
   },
 
   skills: [
-    "Game Development",
+    "Game development",
     "DevOps",
-    "Full-stack Development",
-    "Mobile Application",
+    "Full-stack development",
+    "Mobile apps",
   ],
 
   techStack: [
@@ -50,22 +58,22 @@ export default defineConfig({
 
   projects: [
     {
-      title: "Real Estate Website",
+      title: "Real estate listings",
       description:
-        "Property listings with map search, saved favorites and agent contact forms.",
+        "Property search for a regional agency, with a map that filters listings as you pan.",
       category: "Website",
       year: 2025,
       tags: ["React", "TypeScript", "Postgres"],
       image: {
         src: "/images/projects/real-estate.svg",
-        alt: "Placeholder thumbnail for the Real Estate Website project",
+        alt: "Placeholder thumbnail for the Real estate listings project",
       },
       links: { github: "https://github.com/", live: "https://example.com/" },
       // Optional. Gives the card a "Read case study" link and a page at /works/real-estate-website.
       caseStudy: {
         slug: "real-estate-website",
         summary:
-          "Map search, saved favorites and agent contact forms for a regional property agency.",
+          "A rebuild of a regional agency's WordPress site, so every inquiry arrives tagged with its listing.",
         role: "Full-stack developer, solo",
         timeline: "10 weeks, 2025",
         stack: [
@@ -89,7 +97,7 @@ export default defineConfig({
           { type: "h2", text: "What I built" },
           {
             type: "p",
-            text: "A Next.js app with server-rendered listing pages for SEO, a client-side map that filters as you pan, and a favorites list that works signed out (localStorage) and syncs when you sign in. Each inquiry form carries the listing id, so agents see context in their inbox.",
+            text: "A Next.js app with server-rendered listing pages for SEO, a client-side map that filters as you pan, and a favorites list that works signed out (localStorage) and syncs when you sign in. Each inquiry form carries the listing ID, so agents see context in their inbox.",
           },
           {
             type: "code",
@@ -112,7 +120,7 @@ export default defineConfig({
       },
     },
     {
-      title: "Indie Game",
+      title: "Weekend platformer",
       description:
         "A small 2D platformer with hand-drawn levels, built over a weekend game jam.",
       category: "Game",
@@ -120,39 +128,39 @@ export default defineConfig({
       tags: ["Godot", "GDScript"],
       image: {
         src: "/images/projects/indie-game.svg",
-        alt: "Placeholder thumbnail for the Indie Game project",
+        alt: "Placeholder thumbnail for the Weekend platformer project",
       },
       links: { github: "https://github.com/", live: "https://example.com/" },
     },
     {
-      title: "Restaurant Website",
+      title: "Family restaurant",
       description:
-        "Menu, online reservations and an events page for a local family restaurant.",
+        "Online reservations and an events page for a local family restaurant.",
       category: "Website",
       year: 2024,
       tags: ["Next.js", "Tailwind CSS"],
       image: {
         src: "/images/projects/restaurant.svg",
-        alt: "Placeholder thumbnail for the Restaurant Website project",
+        alt: "Placeholder thumbnail for the Family restaurant project",
       },
       links: { github: "https://github.com/", live: "https://example.com/" },
     },
     {
-      title: "Habit Tracker App",
+      title: "Habit tracker",
       description:
-        "A cross-platform mobile app for building daily habits with streaks and reminders.",
+        "A React Native habit tracker with streaks that survive timezone changes.",
       category: "Mobile app",
       year: 2023,
       tags: ["React Native", "Expo", "SQLite"],
       image: {
         src: "/images/projects/habit-tracker.svg",
-        alt: "Placeholder thumbnail for the Habit Tracker App project",
+        alt: "Placeholder thumbnail for the Habit tracker project",
       },
       links: { github: "https://github.com/" },
       caseStudy: {
         slug: "habit-tracker-app",
         summary:
-          "A cross-platform mobile app for building daily habits with streaks and reminders.",
+          "A habit tracker that works offline, built so you can log a habit seconds after opening it.",
         role: "Mobile developer, with one designer",
         timeline: "6 weeks, 2024",
         stack: ["React Native", "Expo", "SQLite", "TypeScript"],
@@ -184,11 +192,11 @@ export default defineConfig({
 
   about: {
     paragraphs: [
-      "I'm a developer who enjoys the whole journey from rough idea to shipped product, and I care about the details that make software feel good to use.",
-      "When I'm not coding, I'm making small games, reading about design, or helping friends get their first projects online.",
+      "I've been writing software for work since 2022. Lately that includes mentoring interns and running my team's accessibility reviews.",
+      "Outside work I make small games. The platformer in my projects came out of a weekend game jam.",
     ],
     label: "about me",
-    headline: "Get to know me.",
+    headline: "The short version.",
   },
 
   experience: [
@@ -200,7 +208,7 @@ export default defineConfig({
       end: "October 2022",
       description: [
         "Built internal dashboards in React and TypeScript, and cut the admin tools' page load from 4s to 1.2s.",
-        "Turned the design team's Figma mockups into 20 accessible, reusable components.",
+        "Built 20 accessible, reusable components from the design team's Figma mockups.",
       ],
     },
     {
@@ -228,8 +236,8 @@ export default defineConfig({
   ],
 
   cta: {
-    heading: "Let’s work together!",
-    text: "Have a project in mind, or want to say hi? My inbox is always open.",
+    heading: "Looking for my next team",
+    text: "If you're hiring, send me an email. I'm in Manila (UTC+8).",
   },
 
   socials: [

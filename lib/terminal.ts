@@ -1,5 +1,6 @@
 import type { Release } from "./changelog";
 import type { TerminalCommand } from "./config";
+import { plinth } from "./plinth";
 
 /**
  * The palette's terminal mode: the commands, what they print and the placeholder hints.
@@ -47,6 +48,8 @@ export type TerminalData = {
   jokes: string[];
   /** The installed Next.js version, for `neofetch`. */
   nextVersion: string;
+  /** Plinth's own version, for `neofetch` and `plinth`. */
+  plinthVersion: string;
   /** The day the site went live, as an ISO date, e.g. "2026-10-30". */
   launchedAt?: string;
   /** Built-ins turned off in the config. */
@@ -616,7 +619,7 @@ const builtins: Command[] = [
           art: plinthArt(data.name),
           rows: [
             ["Framework", `Next.js ${data.nextVersion}`],
-            ["Env vars", "0 required"],
+            ["Built with", `Plinth ${data.plinthVersion}`],
             [
               "Theme",
               `${theme ?? "light"}${followsSystem ? " (from your system)" : ""}`,
@@ -635,9 +638,33 @@ const builtins: Command[] = [
     }),
   },
   {
+    name: "plinth",
+    description: "What this site is built with",
+    run: (args, { data }) => {
+      if (["source", "repo", "github", "code"].includes(clean(args[0]))) {
+        return { output: [], go: { href: plinth.url, newTab: true } };
+      }
+      return {
+        output: [
+          {
+            type: "fetch",
+            title: `${plinth.name} ${data.plinthVersion}`,
+            art: plinthArt(plinth.name),
+            rows: [
+              ["By", plinth.author],
+              ["Source", plinth.url],
+            ],
+          },
+          text(plinth.tagline, "muted"),
+          text("Type plinth source to open the repo.", "muted"),
+        ],
+      };
+    },
+  },
+  {
     name: "joke",
     aliases: ["fortune"],
-    description: "A random one liner",
+    description: "A random one-liner",
     secrets: ["joke"],
     run: (_args, { data }) => {
       const { jokes } = data;
@@ -819,7 +846,7 @@ const builtins: Command[] = [
   {
     name: "exit",
     aliases: [":q"],
-    description: "Close the palette",
+    description: "Close the terminal",
     run: () => ({ output: [], close: true }),
   },
 ];
@@ -979,6 +1006,7 @@ export function placeholderHints(
     { ...intro, command: first },
     { text: "try", command: `sudo hire ${firstName(data.name)}` },
     { text: "try", command: "neofetch" },
+    { text: "try", command: "plinth" },
     { text: "try", command: "joke" },
     { text: "try", command: "help" },
   ].filter(

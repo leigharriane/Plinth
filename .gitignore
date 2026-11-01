@@ -29,3 +29,6 @@ npm-debug.log*
 
 # personal to do list
 /TODO.md
+
+# the copy of this repo that create-plinthfolio ships, made by its sync-template script
+/packages/create-plinthfolio/template/

@@ -6,7 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { PointerStage } from "@/components/ui/PointerStage";
 import { ShortcutHint } from "@/components/ui/ShortcutHint";
 import { cn } from "@/lib/cn";
-import siteConfig from "@/site.config";
+import siteConfig from "@/plinth.config";
 
 // Full accent only in dark mode, where it reads as light. On the light background it
 // reads as a dark stain, and the heading over its middle drops to about 2.5:1, so light
@@ -61,7 +61,7 @@ export function Hero() {
           {/* One block of text with forced breaks, not three block spans, so the whole name
               is a single LCP candidate. The spaces keep the plain text readable ("I am David"). */}
           {hero.greeting} <br aria-hidden />
-          {name} <br aria-hidden />
+          {hero.name ?? name} <br aria-hidden />
           {hero.tagline}
         </h1>
 
@@ -71,7 +71,7 @@ export function Hero() {
 
         <div className="flex flex-wrap justify-center gap-2.5">
           <ButtonLink href={`mailto:${email}`}>
-            Let’s talk
+            {"Let's talk"}
             <ArrowRight aria-hidden />
           </ButtonLink>
           {resume === "/resume" ? (

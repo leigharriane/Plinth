@@ -9,34 +9,35 @@ A clean, accessible developer portfolio you make your own by editing one file. I
 
 **Live demo:** [plinthfolio.vercel.app](https://plinthfolio.vercel.app)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fleigharriane%2FPlinth)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fleigharriane%2FPlinth&project-name=plinth&repository-name=plinth)
 
 ## Features
 
-| Feature               | What you get                                                                                                                                                                                                                              |
-| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| One config file       | Every word, link and image on the page comes from `site.config.ts`. It's fully typed, so your editor tells you when something's missing.                                                                                                  |
-| Light and dark themes | They follow the visitor's system setting, and there's a toggle too.                                                                                                                                                                       |
-| Sections              | A hero with a peek at your first three projects, a skills marquee, the Recent Work carousel, about with your GitHub activity, a tech stack marquee, experience tabs, a contact call to action and a footer with your local time.          |
-| Case studies          | Any project can carry a `caseStudy`: role, timeline, stack, outcomes and the story. It gets a Read case study link on the card and a static page with its own social image.                                                               |
-| Resume page           | `/resume` is built from your config, so it never drifts from the site. Print it or save it as a PDF from the print dialog.                                                                                                                |
-| Command palette       | ⌘K or Ctrl+K (or the search button in the nav) jumps to a section or project, opens the resume, copies your email, switches theme or opens a profile. It doubles as a small terminal: type `help` in it to see the commands.              |
-| Accessible            | Semantic landmarks, visible focus, a carousel and tabs that work from the keyboard, 44px touch targets, WCAG AA contrast in both themes, and a pause button on the marquees. Motion stops completely if a visitor prefers reduced motion. |
-| Fast                  | Every page is prerendered, and the home page refreshes once a day to keep the GitHub cards current. Lighthouse scores 98–100 on mobile and 100 on desktop for Performance, Accessibility, Best Practices and SEO.                         |
-| Shareable             | Page metadata, a generated social preview image and favicon, `sitemap.xml`, `robots.txt` and an `llms.txt` summary for AI assistants, all built from your config.                                                                         |
+| Feature               | What you get                                                                                                                                                                                                                                                                 |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| One config file       | Every word, link and image on the page comes from `plinth.config.ts`. It's fully typed, so your editor tells you when something's missing.                                                                                                                                   |
+| Light and dark themes | They follow the visitor's system setting, and there's a toggle too.                                                                                                                                                                                                          |
+| Sections              | A hero with a peek at your first three projects, a skills marquee, the Recent Work carousel, about with your GitHub activity, a tech stack marquee, experience tabs, a contact call to action and a footer with your local time.                                             |
+| Case studies          | Any project can carry a `caseStudy`: role, timeline, stack, outcomes and the story. It gets a Read case study link on the card and a static page with its own social image.                                                                                                  |
+| Resume page           | `/resume` is built from your config, so it never drifts from the site. Print it or save it as a PDF from the print dialog.                                                                                                                                                   |
+| Command palette       | ⌘K or Ctrl+K (or the search button in the nav) jumps to a section or project, opens the resume, copies your email, switches theme or opens a profile. It doubles as a small terminal: type `help` in it to see the commands, or `plinth` to see what the site is built with. |
+| Accessible            | Semantic landmarks, visible focus, a carousel and tabs that work from the keyboard, 44px touch targets, WCAG AA contrast in both themes, and a pause button on the marquees. Motion stops completely if a visitor prefers reduced motion.                                    |
+| Fast                  | Every page is prerendered, and the home page refreshes once a day to keep the GitHub cards current. Lighthouse scores 98–100 on mobile and 100 on desktop for Performance, Accessibility, Best Practices and SEO.                                                            |
+| Shareable             | Page metadata, a generated social preview image and favicon, `sitemap.xml`, `robots.txt` and an `llms.txt` summary for AI assistants, all built from your config. The page also carries a `generator` tag and a one-line console note saying it's built with Plinth.         |
 
 ## Customize in 3 steps
 
-1. **Get your own copy.** Click **Use this template** on GitHub if it's turned on (see the last section), or the Deploy button above, which copies the repo for you. Then clone it and start the dev server:
+1. **Get your own copy.** The quickest way is one command, which asks for your name, what you do and your email, then copies Plinth into a new folder with those filled in, starts a git repository and installs everything:
 
    ```bash
-   git clone https://github.com/<you>/<your-repo>.git
-   cd <your-repo>
-   npm install
+   npx create-plinthfolio my-site
+   cd my-site
    npm run dev
    ```
 
-2. **Make it yours.** Put your name, links, projects and experience in `site.config.ts`. Then swap out the placeholder files in `public/`:
+   Or click **Use this template** on GitHub if it's turned on (see the last section), or the Deploy button above, which copies the repo for you. Then clone it, `npm install` and `npm run dev`.
+
+2. **Make it yours.** Put your name, links, projects and experience in `plinth.config.ts`. Then swap out the placeholder files in `public/`:
 
    | Path                      | What goes there                                                     |
    | ------------------------- | ------------------------------------------------------------------- |
@@ -44,11 +45,11 @@ A clean, accessible developer portfolio you make your own by editing one file. I
    | `public/images/projects/` | Project thumbnails. 16:10 fits best, e.g. 1280×800.                 |
    | `public/images/logos/`    | Square company logos.                                               |
 
-3. **Deploy.** Push to GitHub and import the repo on [Vercel](https://vercel.com/new). You don't have to configure anything: Vercel hands the site its URL for links and social previews. Using a custom domain? Set `url` in `site.config.ts`.
+3. **Deploy.** Push to GitHub and import the repo on [Vercel](https://vercel.com/new). You don't have to configure anything: Vercel hands the site its URL for links and social previews. Using a custom domain? Set `url` in `plinth.config.ts`.
 
 ## Configuration
 
-Everything lives in [`site.config.ts`](site.config.ts). Each field is documented in the types in [`lib/config.ts`](lib/config.ts), so you can hover a field in your editor to see what it does.
+Everything lives in [`plinth.config.ts`](plinth.config.ts). Each field is documented in the types in [`lib/config.ts`](lib/config.ts), so you can hover a field in your editor to see what it does.
 
 | Field                 | What it does                                                                                                                                                                                                                                                                         |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -67,6 +68,7 @@ Everything lives in [`site.config.ts`](site.config.ts). Each field is documented
 | `socials`             | Icon links. The `SocialPlatform` type lists every supported platform. A GitHub link with your username turns on the GitHub row in about.                                                                                                                                             |
 | `terminal`            | Optional. The palette's terminal: your `status` line, the day you `launched`, a `prompt`, your own `jokes`, built-ins to `disable`, and `commands` of your own that print text, open a link or run a built-in. `whatsnew` reads `CHANGELOG.md`. Set `enabled: false` to turn it off. |
 | `seo.description`     | Optional. The description for search and social previews. Defaults to `hero.intro`.                                                                                                                                                                                                  |
+| `seo.siteName`        | Optional. The small publisher line under the title on link previews. Defaults to `name`, which is right for your own site. The demo sets it to `"Plinth by Leigh Arriane"`, so remove it on yours.                                                                                   |
 
 Images can be paths under `public/` or full URLs. Remote images and SVGs are served as-is, so you don't need to touch `next.config.ts`.
 
@@ -75,6 +77,20 @@ The GitHub row in the about section needs no token. It refreshes once a day, and
 ### Colors and fonts
 
 The palette and type scale are CSS variables at the top of [`app/globals.css`](app/globals.css), with separate light and dark values. The font is [Albert Sans](https://fonts.google.com/specimen/Albert+Sans), and it's loaded in [`app/layout.tsx`](app/layout.tsx).
+
+## Built with Plinth
+
+Sites on Plinth so far:
+
+- [plinthfolio.vercel.app](https://plinthfolio.vercel.app), the demo
+
+Built one? Add it to this list. And if you'd like to say so on your own repo, here's a badge:
+
+[![Made with Plinth](https://img.shields.io/badge/Made%20with-Plinth-0019ff)](https://github.com/leigharriane/Plinth)
+
+```md
+[![Made with Plinth](https://img.shields.io/badge/Made%20with-Plinth-0019ff)](https://github.com/leigharriane/Plinth)
+```
 
 ## Development
 
@@ -90,6 +106,10 @@ You'll need Node.js 20.9 or later.
 | `npm run format`       | Formats everything with Prettier.                                                                        |
 | `npm run format:check` | Checks formatting without changing files.                                                                |
 | `npm run lighthouse`   | Runs Lighthouse on every page of the last build and checks it against the budgets in `lighthouserc.cjs`. |
+
+### create-plinthfolio
+
+`packages/create-plinthfolio` is the `npx create-plinthfolio` command. It ships a copy of this repo in its `template/` folder (ignored by git), made by `npm run sync-template` in that folder and again automatically before `npm pack` or `npm publish`, so a published version always carries the Plinth it was packed from. Its README has the publishing steps.
 
 ### Checks and releases
 

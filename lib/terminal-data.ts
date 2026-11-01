@@ -1,7 +1,8 @@
 import nextPackage from "next/package.json";
-import siteConfig from "@/site.config";
+import siteConfig from "@/plinth.config";
 import { readReleases } from "./changelog";
 import { pageSections } from "./nav";
+import { plinthVersion } from "./plinth-version";
 import { paletteProjects } from "./palette-projects";
 import {
   builtinNames,
@@ -29,7 +30,7 @@ const sections = pageSections(
 );
 
 function fail(message: string): never {
-  throw new Error(`site.config.ts: ${message}`);
+  throw new Error(`plinth.config.ts: ${message}`);
 }
 
 /**
@@ -145,6 +146,7 @@ function build(): TerminalData {
     prompt: config?.prompt || defaultPrompt(siteConfig.name),
     jokes: config?.jokes?.length ? config.jokes : defaultJokes,
     nextVersion: nextPackage.version,
+    plinthVersion,
     launchedAt: config?.launched,
     disabled: config?.disable ?? [],
     custom: config?.commands ?? [],

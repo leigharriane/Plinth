@@ -13,7 +13,7 @@ import { caseStudies, findCaseStudy } from "@/lib/case-studies";
 import { cn } from "@/lib/cn";
 import { iconSize } from "@/lib/icons";
 import { skipOptimizer } from "@/lib/image";
-import siteConfig from "@/site.config";
+import siteConfig from "@/plinth.config";
 import { contentType, size } from "./opengraph-image";
 
 type Params = Promise<{ slug: string }>;
@@ -80,7 +80,7 @@ const siblingTitle =
 const sideLink =
   "inline-flex min-h-11 items-center gap-2 font-medium decoration-2 underline-offset-6 hover:underline";
 
-/** A project's case study, from the `caseStudy` field in site.config.ts. */
+/** A project's case study, from the `caseStudy` field in plinth.config.ts. */
 export default async function CaseStudyPage({ params }: { params: Params }) {
   const project = findCaseStudy((await params).slug);
   if (!project) notFound();

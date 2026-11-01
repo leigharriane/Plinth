@@ -1,6 +1,6 @@
 import { ExperienceTabs } from "@/components/sections/ExperienceTabs";
 import { Container } from "@/components/ui/Container";
-import siteConfig from "@/site.config";
+import siteConfig from "@/plinth.config";
 
 export function Experience() {
   if (siteConfig.experience.length === 0) return null;

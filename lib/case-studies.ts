@@ -1,5 +1,5 @@
 import type { CaseStudy, Project } from "@/lib/config";
-import siteConfig from "@/site.config";
+import siteConfig from "@/plinth.config";
 
 export type ProjectWithCaseStudy = Project & { caseStudy: CaseStudy };
 

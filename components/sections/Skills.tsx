@@ -1,5 +1,5 @@
 import { Marquee } from "@/components/ui/Marquee";
-import siteConfig from "@/site.config";
+import siteConfig from "@/plinth.config";
 
 export function Skills() {
   if (siteConfig.skills.length === 0) return null;

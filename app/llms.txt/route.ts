@@ -1,7 +1,9 @@
 import { caseStudies } from "@/lib/case-studies";
+import { plinth } from "@/lib/plinth";
+import { plinthVersion } from "@/lib/plinth-version";
 import { socialPlatforms } from "@/lib/social-icons";
 import { siteUrl } from "@/lib/site-url";
-import siteConfig from "@/site.config";
+import siteConfig from "@/plinth.config";
 
 // Built once at build time, like the sitemap.
 export const dynamic = "force-static";
@@ -67,7 +69,12 @@ export function GET() {
     if (platform === "email") continue;
     lines.push(link(label ?? socialPlatforms[platform].name, url));
   }
-  lines.push(link("Website", siteUrl.href), "");
+  lines.push(
+    link("Website", siteUrl.href),
+    "",
+    `Built with [${plinth.name}](${plinth.url}) ${plinthVersion} by ${plinth.author}. ${plinth.tagline}`,
+    "",
+  );
 
   return new Response(lines.join("\n"), {
     headers: { "Content-Type": "text/plain; charset=utf-8" },

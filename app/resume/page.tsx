@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { PrintButton } from "@/components/ui/PrintButton";
 import { socialPlatforms } from "@/lib/social-icons";
-import siteConfig from "@/site.config";
+import siteConfig from "@/plinth.config";
 
 const title = `Resume | ${siteConfig.name}`;
 const description = `Resume of ${siteConfig.name}, ${siteConfig.role}.`;
@@ -86,7 +86,7 @@ function Section({
 }
 
 /**
- * A resume built from site.config.ts, so it never drifts from the site. Print it, or
+ * A resume built from plinth.config.ts, so it never drifts from the site. Print it, or
  * save it as a PDF from the print dialog, to get a file for applications.
  */
 export default function ResumePage() {
