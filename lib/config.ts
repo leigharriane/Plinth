@@ -181,6 +181,11 @@ export type TerminalCommand = {
 export type SiteConfig = {
   /** Your full name. It shows up in the nav, page title, footer and favicon initials. */
   name: string;
+  /**
+   * One or two letters for the favicon and the terminal's pedestal art. Leave it out to use
+   * your initials, e.g. "dp" for David Parker. The demo sets "p" for Plinth, so remove it on yours.
+   */
+  icon?: string;
   /** Your job title, e.g. "Software Engineer". Used in page metadata and the social preview image. */
   role: string;
   /**

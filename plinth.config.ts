@@ -7,6 +7,8 @@ import { defineConfig } from "@/lib/config";
  */
 export default defineConfig({
   name: "David Parker",
+  // The favicon letters. This "p" is the demo's, for Plinth; remove it to get your initials.
+  icon: "p",
   role: "Software Engineer",
   // Optional on Vercel. Uncomment and set this if you use a custom domain.
   // url: "https://your-domain.com",
