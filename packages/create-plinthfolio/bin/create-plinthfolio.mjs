@@ -127,8 +127,14 @@ function writeConfig(target, answers) {
   for (const field of ["name", "role", "email"]) {
     if (answers[field]) source = setField(source, field, answers[field]);
   }
-  // The demo's publisher line on link previews. A new site wants its own name there.
-  source = source.replace(/^[ \t]*\/\/[^\n]*\n[ \t]*siteName: "[^"]*",\n/m, "");
+  // The demo's own marks: "p" on the favicon and its publisher line on link previews. A
+  // new site wants its owner's initials and name there, which the defaults give.
+  for (const field of ["icon", "siteName"]) {
+    source = source.replace(
+      new RegExp(`^[ \\t]*\\/\\/[^\\n]*\\n[ \\t]*${field}: "[^"]*",\\n`, "m"),
+      "",
+    );
+  }
   writeFileSync(path, source);
 }
 

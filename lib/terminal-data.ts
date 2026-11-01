@@ -1,6 +1,7 @@
 import nextPackage from "next/package.json";
 import siteConfig from "@/plinth.config";
 import { readReleases } from "./changelog";
+import { initials } from "./initials";
 import { pageSections } from "./nav";
 import { plinthVersion } from "./plinth-version";
 import { paletteProjects } from "./palette-projects";
@@ -118,6 +119,7 @@ function build(): TerminalData {
   const names = projectNames();
   return {
     name: siteConfig.name,
+    mark: siteConfig.icon ?? initials(siteConfig.name),
     role: siteConfig.role,
     intro: siteConfig.hero.intro,
     email: siteConfig.email,
