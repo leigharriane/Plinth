@@ -1,6 +1,6 @@
 {
   "name": "create-plinthfolio",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Start a Plinth portfolio with one command: npx create-plinthfolio",
   "license": "MIT",
   "type": "module",
