@@ -2,6 +2,7 @@ import nextPackage from "next/package.json";
 import siteConfig from "@/plinth.config";
 import { readReleases } from "./changelog";
 import { pageSections } from "./nav";
+import { plinthVersion } from "./plinth-version";
 import { paletteProjects } from "./palette-projects";
 import {
   builtinNames,
@@ -145,6 +146,7 @@ function build(): TerminalData {
     prompt: config?.prompt || defaultPrompt(siteConfig.name),
     jokes: config?.jokes?.length ? config.jokes : defaultJokes,
     nextVersion: nextPackage.version,
+    plinthVersion,
     launchedAt: config?.launched,
     disabled: config?.disable ?? [],
     custom: config?.commands ?? [],

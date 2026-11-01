@@ -2,8 +2,11 @@ import type { Metadata, Viewport } from "next";
 import { Albert_Sans } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Nav } from "@/components/layout/Nav";
+import { Signature } from "@/components/layout/Signature";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
+import { plinth } from "@/lib/plinth";
+import { plinthVersion } from "@/lib/plinth-version";
 import { siteUrl } from "@/lib/site-url";
 import { staticColors } from "@/lib/static-colors";
 import siteConfig from "@/plinth.config";
@@ -18,18 +21,21 @@ const albertSans = Albert_Sans({
 
 const title = `${siteConfig.name} | ${siteConfig.role}`;
 const description = siteConfig.seo?.description ?? siteConfig.hero.intro;
+const credit = `Built with ${plinth.name} ${plinthVersion} by ${plinth.author} | ${plinth.url}`;
 
 // og:image and twitter:image are added automatically from app/opengraph-image.tsx.
 export const metadata: Metadata = {
   metadataBase: siteUrl,
   title,
   description,
+  // Like Astro and Hugo set it: what "what's this built with" tools read.
+  generator: `${plinth.name} ${plinthVersion}`,
   authors: [{ name: siteConfig.name, url: siteUrl.href }],
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: "/",
-    siteName: siteConfig.name,
+    siteName: siteConfig.seo?.siteName ?? siteConfig.name,
     title,
     description,
   },
@@ -65,6 +71,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <Signature line={credit} />
         </ThemeProvider>
       </body>
     </html>

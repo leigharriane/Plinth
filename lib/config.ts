@@ -136,6 +136,7 @@ export type TerminalBuiltin =
   | "date"
   | "whatsnew"
   | "neofetch"
+  | "plinth"
   | "joke"
   | "secrets"
   | "sudo"
@@ -297,6 +298,11 @@ export type SiteConfig = {
   seo?: {
     /** The description in search results and link previews. Leave it out to use `hero.intro`. */
     description?: string;
+    /**
+     * The site name on link previews (the small line under the title on Slack, iMessage
+     * and X). Leave it out to use `name`, which is right for your own portfolio.
+     */
+    siteName?: string;
   };
 };
 

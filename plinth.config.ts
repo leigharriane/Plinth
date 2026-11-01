@@ -17,6 +17,12 @@ export default defineConfig({
   resume: "/resume",
   // Shows your local time in the footer. Remove it to hide the clock.
   timezone: "Asia/Manila",
+  // Optional. What search results and link previews say about the site. Leave it out to use `hero.intro`.
+  seo: {
+    description: "A developer portfolio you make your own by editing one file.",
+    // The publisher line on link previews. This one is the demo's, so remove it on your own site.
+    siteName: "Plinth by Leigh Arriane",
+  },
 
   hero: {
     greeting: "Hello! I am",
