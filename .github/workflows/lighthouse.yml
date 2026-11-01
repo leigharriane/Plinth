@@ -1,10 +1,12 @@
 # Runs Lighthouse on every page of a production build and fails the pull request if a
 # score or size budget in lighthouserc.cjs is missed. The HTML reports are attached to
-# the run as an artifact.
+# the run as an artifact. It also runs on main so the README badge reflects what shipped.
 name: Lighthouse
 
 on:
   pull_request:
+  push:
+    branches: [main]
 
 permissions:
   contents: read
