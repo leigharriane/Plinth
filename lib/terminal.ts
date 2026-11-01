@@ -23,6 +23,8 @@ export type TerminalProject = {
 /** What the terminal needs from the config and the build, picked out on the server. */
 export type TerminalData = {
   name: string;
+  /** The favicon's letters, for the pedestal art in `neofetch`. */
+  mark: string;
   role: string;
   intro: string;
   email: string;
@@ -143,14 +145,6 @@ export function firstName(name: string) {
   return name.trim().split(/\s+/)[0].toLowerCase();
 }
 
-/** Initials like the favicon's, e.g. "David Parker" → "DP". */
-function initials(name: string) {
-  const words = name.trim().split(/\s+/);
-  return (
-    words.length > 1 ? words[0][0] + words[words.length - 1][0] : words[0][0]
-  ).toUpperCase();
-}
-
 /** The "david@plinth" in "david@plinth ~ $", so `neofetch` matches a custom prompt. */
 function promptHost(data: TerminalData) {
   return data.prompt.match(/^\S+@\S+/)?.[0] ?? `${firstName(data.name)}@plinth`;
@@ -182,12 +176,15 @@ function daysSince(isoDate: string, now: Date) {
   return `${Math.max(days, 0)} ${days === 1 ? "day" : "days"}`;
 }
 
-/** A pedestal with the initials on it. Seven columns, so it fits beside the facts. */
-function plinthArt(name: string) {
-  const mark = initials(name).padEnd(2, " ");
+/**
+ * A pedestal with the favicon on it: the letters and a block cursor, lowercase like a
+ * prompt. Seven columns, so it fits beside the facts.
+ */
+function plinthArt(letters: string) {
+  const mark = `${letters.trim().slice(0, 2).toLowerCase()}▮`.padEnd(3, " ");
   return [
     "  ┌─────┐  ",
-    `  │ ${mark}  │  `,
+    `  │ ${mark} │  `,
     "  │     │  ",
     "┌─┴─────┴─┐",
     "└─────────┘",
@@ -616,7 +613,7 @@ const builtins: Command[] = [
         {
           type: "fetch",
           title: promptHost(data),
-          art: plinthArt(data.name),
+          art: plinthArt(data.mark),
           rows: [
             ["Framework", `Next.js ${data.nextVersion}`],
             ["Built with", `Plinth ${data.plinthVersion}`],
@@ -649,7 +646,7 @@ const builtins: Command[] = [
           {
             type: "fetch",
             title: `${plinth.name} ${data.plinthVersion}`,
-            art: plinthArt(plinth.name),
+            art: plinthArt("p"),
             rows: [
               ["By", plinth.author],
               ["Source", plinth.url],
