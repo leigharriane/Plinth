@@ -35,7 +35,7 @@ A clean, accessible developer portfolio you make your own by editing one file. I
    npm run dev
    ```
 
-   Or click **Use this template** on GitHub if it's turned on (see the last section), or the Deploy button above, which copies the repo for you. Then clone it, `npm install` and `npm run dev`.
+   Or click **Use this template** on GitHub, or the Deploy button above, which copies the repo for you. Then clone it, `npm install` and `npm run dev`.
 
 2. **Make it yours.** Put your name, links, projects and experience in `plinth.config.ts`. Then swap out the placeholder files in `public/`:
 
@@ -117,10 +117,6 @@ You'll need Node.js 20.9 or later.
 Two GitHub Actions run on their own. On every pull request, [Lighthouse](.github/workflows/lighthouse.yml) builds the site, checks every page against the score and size budgets in `lighthouserc.cjs`, and fails the PR if one slips. The HTML reports are attached to the run.
 
 On every merge into `main`, [release-please](.github/workflows/release-please.yml) keeps a release PR open with the next version and its notes. Merge that PR when you're ready and it bumps the version, updates `CHANGELOG.md` and publishes the GitHub release. It writes the notes from your commit titles, so start them with `feat:`, `fix:`, `docs:` and so on. Only features, fixes, performance and docs make it into the notes. The terminal's `whatsnew` command reads that same changelog.
-
-## For maintainers: make this a template repository
-
-On GitHub, open **Settings → General** and tick **Template repository**. That gives people a **Use this template** button, so they don't have to fork.
 
 ## License
 
