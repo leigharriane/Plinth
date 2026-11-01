@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.0](https://github.com/leigharriane/Plinth/compare/v0.3.1...v0.4.0) (2026-11-01)
+
+
+### Features
+
+* show p on the demo favicon with an icon config field ([3a18ab5](https://github.com/leigharriane/Plinth/commit/3a18ab5655296d1b829086209a56e086e1ac1dd1))
+* show p on the demo favicon with an icon config field ([e7f3dfa](https://github.com/leigharriane/Plinth/commit/e7f3dfa50dea71a451cd15cacfdf0b4f4ea9badf))
+
 ## [0.3.1](https://github.com/leigharriane/Plinth/compare/v0.3.0...v0.3.1) (2026-11-01)
 
 
