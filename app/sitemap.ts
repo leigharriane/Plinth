@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { caseStudies } from "@/lib/case-studies";
 import { siteUrl } from "@/lib/site-url";
-import siteConfig from "@/site.config";
+import siteConfig from "@/plinth.config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [

@@ -22,7 +22,7 @@ import type { SocialPlatform } from "@/lib/config";
 import { iconSize } from "@/lib/icons";
 
 /**
- * Icon and default accessible name for each platform `site.config.ts` accepts. Brand marks
+ * Icon and default accessible name for each platform `plinth.config.ts` accepts. Brand marks
  * use the brand size; `iconClassName` overrides it where a mark needs a different box.
  */
 export const socialPlatforms: Record<

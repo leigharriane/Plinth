@@ -3,9 +3,10 @@ import { Container } from "@/components/ui/Container";
 import { CurrentYear } from "@/components/ui/CurrentYear";
 import { LocalTime } from "@/components/ui/LocalTime";
 import { visibleNavLinks } from "@/lib/nav";
+import { plinth } from "@/lib/plinth";
 import { timeZone, timeZonePlace } from "@/lib/time-zone";
 import { SectionLink } from "./SectionLink";
-import siteConfig from "@/site.config";
+import siteConfig from "@/plinth.config";
 
 export function Footer() {
   return (
@@ -40,14 +41,16 @@ export function Footer() {
             )}
             <p className="text-center text-meta font-medium">
               © <CurrentYear buildYear={new Date().getFullYear()} />{" "}
-              {siteConfig.name}. All Rights Reserved. | Built with{" "}
+              {siteConfig.name} | Built with{" "}
               {/* Underlined so it reads as a link without color (WCAG 1.4.1). The padding
                   grows the tap target to 44px; the negative margin keeps it off the line height. */}
               <a
-                href="https://github.com/leigharriane/Plinth"
+                href={plinth.url}
                 className="link-marker -my-3.5 inline-flex py-3.5 underline decoration-border underline-offset-4"
               >
-                <span>Plinth by Leigh Arriane</span>
+                <span>
+                  {plinth.name} by {plinth.author}
+                </span>
               </a>
             </p>
           </div>

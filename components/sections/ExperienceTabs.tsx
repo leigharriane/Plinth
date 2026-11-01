@@ -51,7 +51,7 @@ function JobDetails({ job }: { job: Experience }) {
   return (
     <>
       <p className="text-subtitle font-semibold">
-        {job.start} - {job.end}
+        {job.start} to {job.end}
       </p>
       <div className="mt-stack max-w-[38rem] space-y-[1em] text-lead font-normal text-fg-muted">
         {job.description.map((paragraph, index) => (

@@ -20,6 +20,8 @@ type CarouselProps = {
   children: ReactNode;
   /** Accessible name for the list and the buttons, e.g. "Projects". */
   label: string;
+  /** One slide, for the arrows' names ("Next project"), since each press moves one. Defaults to `label`. */
+  itemLabel?: string;
   /**
    * The row above the list, usually the section heading. From md up the arrows move to
    * the end of this row, which saves their own row on short laptop screens; phones keep
@@ -39,6 +41,7 @@ type CarouselProps = {
 export function Carousel({
   children,
   label,
+  itemLabel = label,
   header,
   className,
   listClassName,
@@ -125,7 +128,7 @@ export function Carousel({
   const hasHeader = Boolean(header);
   const arrows = (
     <Arrows
-      label={label}
+      label={itemLabel}
       listId={listId}
       canPrev={canPrev}
       canNext={canNext}

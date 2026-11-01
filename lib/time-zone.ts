@@ -1,7 +1,7 @@
-import siteConfig from "@/site.config";
+import siteConfig from "@/plinth.config";
 
 /**
- * The `timezone` from site.config.ts in its canonical spelling, or undefined when it's left
+ * The `timezone` from plinth.config.ts in its canonical spelling, or undefined when it's left
  * out. Checked at build, so a typo fails the build instead of quietly hiding the clock.
  */
 export const timeZone = parse(siteConfig.timezone);
@@ -17,7 +17,7 @@ function parse(value: string | undefined) {
     }).resolvedOptions().timeZone;
   } catch {
     throw new Error(
-      `site.config.ts: \`timezone\` must be a time zone name like "Asia/Manila" (got "${value}").`,
+      `plinth.config.ts: \`timezone\` must be a time zone name like "Asia/Manila" (got "${value}").`,
     );
   }
 }

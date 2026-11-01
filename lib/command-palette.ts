@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import type { TerminalData } from "./terminal";
 
 /**
- * What the palette needs from `site.config.ts`, picked out by the server Nav so the config
+ * What the palette needs from `plinth.config.ts`, picked out by the server Nav so the config
  * and the brand icon set stay out of the browser bundle.
  */
 export type CommandPaletteData = {

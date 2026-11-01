@@ -619,7 +619,7 @@ export function CommandPaletteDialog({
     copied === "done"
       ? "Email copied"
       : copied === "failed"
-        ? `Couldn't copy | email is ${data.email}`
+        ? `Couldn't copy. The email is ${data.email}.`
         : "";
 
   // The list is capped in height, so an arrow key can select a row out of view, e.g.

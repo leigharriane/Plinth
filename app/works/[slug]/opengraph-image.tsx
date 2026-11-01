@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { ImageResponse } from "next/og";
 import { caseStudies, findCaseStudy } from "@/lib/case-studies";
 import { staticColors } from "@/lib/static-colors";
-import siteConfig from "@/site.config";
+import siteConfig from "@/plinth.config";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";

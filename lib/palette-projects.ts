@@ -1,5 +1,5 @@
 import type { PaletteProject } from "@/lib/command-palette";
-import siteConfig from "@/site.config";
+import siteConfig from "@/plinth.config";
 
 /** The projects as palette rows. Server only, so the config stays out of the browser. */
 export const paletteProjects: PaletteProject[] = siteConfig.projects.map(

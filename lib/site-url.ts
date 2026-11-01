@@ -1,9 +1,9 @@
-import siteConfig from "@/site.config";
+import siteConfig from "@/plinth.config";
 
 const configured = siteConfig.url?.trim();
 
 /**
- * The site's public origin: `url` from site.config.ts, else the production domain
+ * The site's public origin: `url` from plinth.config.ts, else the production domain
  * Vercel exposes at build time, else localhost for local builds. A configured URL
  * without a scheme ("my-site.com") gets https:// added.
  */
@@ -20,7 +20,7 @@ function parse(value: string) {
     return new URL(withScheme);
   } catch {
     throw new Error(
-      `site.config.ts: \`url\` must be a full address like "https://your-domain.com" (got "${value}").`,
+      `plinth.config.ts: \`url\` must be a full address like "https://your-domain.com" (got "${value}").`,
     );
   }
 }

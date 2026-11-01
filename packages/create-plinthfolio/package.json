@@ -1,0 +1,33 @@
+{
+  "name": "create-plinthfolio",
+  "version": "0.1.0",
+  "description": "Start a Plinth portfolio with one command: npx create-plinthfolio",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "create-plinthfolio": "bin/create-plinthfolio.mjs"
+  },
+  "files": [
+    "bin",
+    "template"
+  ],
+  "scripts": {
+    "sync-template": "node scripts/sync-template.mjs",
+    "prepack": "node scripts/sync-template.mjs"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leigharriane/Plinth",
+    "directory": "packages/create-plinthfolio"
+  },
+  "keywords": [
+    "plinth",
+    "portfolio",
+    "template",
+    "nextjs",
+    "create"
+  ]
+}

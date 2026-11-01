@@ -2,7 +2,7 @@ import { cn } from "@/lib/cn";
 import { iconSize } from "@/lib/icons";
 import { socialPlatforms } from "@/lib/social-icons";
 import { Roll } from "./Roll";
-import siteConfig from "@/site.config";
+import siteConfig from "@/plinth.config";
 
 /** Icon links for every entry in `socials`, with 44px hit areas around 20px brand marks. */
 export function SocialLinks({ className }: { className?: string }) {
