@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/leigharriane/Plinth/compare/v0.4.0...v0.4.1) (2026-11-01)
+
+
+### Docs
+
+* add badges, a quick start and a contributing section to the README ([282b057](https://github.com/leigharriane/Plinth/commit/282b057573b115bdbc66b7349a629965c98406d2))
+
 ## [0.4.0](https://github.com/leigharriane/Plinth/compare/v0.3.1...v0.4.0) (2026-11-01)
 
 

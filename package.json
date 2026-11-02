@@ -1,6 +1,6 @@
 {
   "name": "plinth",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "private": true,
   "description": "An open-source developer portfolio template. Edit one config file, deploy to Vercel.",
   "license": "MIT",
